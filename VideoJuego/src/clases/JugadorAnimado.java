@@ -43,10 +43,10 @@ public class JugadorAnimado extends ObjetoJuego{
 	
 	public void inicializarAnimaciones() {
 		Rectangle coordenadasCorrer[]= {
-				new Rectangle(5, 134, 30, 64),
-				new Rectangle(49, 137, 31, 63),
-				new Rectangle(94, 135, 30, 63),
-				new Rectangle(138, 136, 30, 63),
+				new Rectangle(1, 135, 36, 65),
+				new Rectangle(45, 137, 37, 63),
+				new Rectangle(90, 136, 38, 63),
+				new Rectangle(133, 138, 39, 61),
 			//	new Rectangle(204, 4, 36, 66),
 			//	new Rectangle(253, 4, 36, 66),
 			//	new Rectangle(306, 4, 32, 66),
@@ -72,7 +72,7 @@ public class JugadorAnimado extends ObjetoJuego{
 		animaciones.put("correr", animacionCorrer);
 		
 		Rectangle coordenadasDescanso[] = {
-				new Rectangle(4, 2, 37, 64),
+				new Rectangle(0, 4, 46, 62),
 				//new Rectangle(54, 309, 37, 68),
 				//new Rectangle(111, 309, 31, 68),
 				//new Rectangle(162, 309, 30, 68),
@@ -87,10 +87,10 @@ public class JugadorAnimado extends ObjetoJuego{
 		animaciones.put("descanso",animacionDescanso);
 		
 		Rectangle coordenadasAbajo[] = {
-				new Rectangle(4, 2, 37, 64),
-				new Rectangle(51, 4, 31, 63),
-				new Rectangle(95, 2, 33, 64),
-				new Rectangle(141, 3, 29, 64),
+				new Rectangle(0, 4, 46, 62),
+				new Rectangle(45, 4, 44, 62),
+				new Rectangle(92, 3, 41, 62),
+				new Rectangle(134, 5, 43, 61),
 				//new Rectangle(214, 309, 28, 69),
 				//new Rectangle(265, 309, 28, 69),
 				//new Rectangle(214, 309, 28, 69),
@@ -102,10 +102,10 @@ public class JugadorAnimado extends ObjetoJuego{
 		animaciones.put("abajo",animacionAbajo);
 		
 		Rectangle coordenadasArriba[] = {
-				new Rectangle(5, 201, 35, 64),
-				new Rectangle(51, 203, 31, 63),
-				new Rectangle(95, 210, 33, 64),
-				new Rectangle(139, 203, 29, 64),
+				new Rectangle(0, 204, 45, 62),
+				new Rectangle(44, 206, 47, 57),
+				new Rectangle(90, 205, 46, 60),
+				new Rectangle(134, 204, 44, 59),
 				//new Rectangle(214, 309, 28, 69),
 				//new Rectangle(265, 309, 28, 69),
 				//new Rectangle(214, 309, 28, 69),

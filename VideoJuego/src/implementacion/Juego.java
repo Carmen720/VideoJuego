@@ -100,7 +100,7 @@ public class Juego extends Application{
 		imagenes = new HashMap<String,Image>();
 		cargarImagenes();
 		//jugador = new Jugador(20, 40, "goku", 3, 0);
-		jugadorAnimado = new JugadorAnimado(25, 285, "personaje", 3, 0,"descanso");
+		jugadorAnimado = new JugadorAnimado(25, 290, "personaje", 3, 0,"descanso");
 		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",5);
 		inicializarTiles();
 		item = new Item(200,300, "item",0, 1);
@@ -131,7 +131,7 @@ public class Juego extends Application{
 		imagenes.put("fondo-bosque",new Image("fondo-bosque.jpg"));
 		imagenes.put("fondo-bosque2",new Image("fondo-bosque2.jpg"));
 		imagenes.put("tilemap",new Image("tilemap.png"));
-		imagenes.put("personaje", new Image("tonystark.png"));
+		imagenes.put("personaje", new Image("sailormoon.png"));
 		imagenes.put("item", new Image("item.png"));
 	}
 	
