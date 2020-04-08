@@ -91,8 +91,8 @@ public class JugadorAnimado extends ObjetoJuego{
 		Rectangle coordenadas = animaciones.get(animacionActual).calcularFrameActual(t);
 		this.xImagen = (int)coordenadas.getX();
 		this.yImagen = (int)coordenadas.getY();
-		this.altoImagen = (int)coordenadas.getWidth();
-		this.anchoImagen = (int)coordenadas.getHeight();		
+		this.anchoImagen = (int)coordenadas.getWidth();
+		this.altoImagen = (int)coordenadas.getHeight();		
 	}
 	public Rectangle obtenerRectangulo() {
 		return new Rectangle(x, y, (direccion*anchoImagen) - 10, altoImagen);

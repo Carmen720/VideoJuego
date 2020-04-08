@@ -17,7 +17,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-//Hola
+
 public class Juego extends Application{
 	private GraphicsContext graficos;
 	private Group root;
@@ -47,9 +47,10 @@ public class Juego extends Application{
 			{20,20,20,20,20,20,20,20,20,20},
 			{20,20,20,20,20,20,20,20,20,20},
 			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20},
 			{20,20,20,20,20,20,20,20,20,20}
+			
+			
+			
 	};
 	public static void main(String[] args) {
 		launch(args);
@@ -97,7 +98,7 @@ public class Juego extends Application{
 		imagenes = new HashMap<String,Image>();
 		cargarImagenes();
 		//jugador = new Jugador(20, 40, "goku", 3, 0);
-		jugadorAnimado = new JugadorAnimado(20, 150, "megaman", 3, 0,"descanso");
+		jugadorAnimado = new JugadorAnimado(25, 150, "personaje", 3, 0,"descanso");
 		fondo = new Fondo(0,0,"fondo-bosque","background2",5);
 		inicializarTiles();
 		item = new Item(200,180, "item",0, 1);
@@ -130,7 +131,7 @@ public class Juego extends Application{
 		imagenes.put("fondo-bosque",new Image("fondo-bosque.jpg"));
 		imagenes.put("background2",new Image("background2.jpg"));
 		imagenes.put("tilemap",new Image("tilemap.png"));
-		imagenes.put("megaman", new Image("megaman.png"));
+		imagenes.put("personaje", new Image("personaje.png"));
 		imagenes.put("item", new Image("item.png"));
 	}
 	
