@@ -72,7 +72,7 @@ public class JugadorAnimado extends ObjetoJuego{
 		animaciones.put("correr", animacionCorrer);
 		
 		Rectangle coordenadasDescanso[] = {
-				new Rectangle(0, 4, 46, 62),
+				new Rectangle(0, 204, 45, 62),
 				//new Rectangle(54, 309, 37, 68),
 				//new Rectangle(111, 309, 31, 68),
 				//new Rectangle(162, 309, 30, 68),

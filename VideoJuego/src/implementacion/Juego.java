@@ -40,16 +40,17 @@ public class Juego extends Application{
 	private ArrayList<Tile> tiles;
 
 	private int tilemap[][] = {
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{5,5,5,5,5,5,5,5,5,5},
 			{20,20,20,20,20,20,20,20,20,20},
 			{20,20,20,20,20,20,20,20,20,20},
 			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20}
+			{0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0},
+			{20,20,20,20,20,20,20,20,20,20},
+			{20,20,20,20,20,20,20,20,20,20},
+			{20,20,20,20,20,20,20,20,20,20},
+			
 			
 			
 			
@@ -100,12 +101,12 @@ public class Juego extends Application{
 		imagenes = new HashMap<String,Image>();
 		cargarImagenes();
 		//jugador = new Jugador(20, 40, "goku", 3, 0);
-		jugadorAnimado = new JugadorAnimado(25, 290, "personaje", 3, 0,"descanso");
+		jugadorAnimado = new JugadorAnimado(315, 420, "personaje", 3, 0,"descanso");
 		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",5);
 		inicializarTiles();
-		item = new Item(200,300, "item",0, 1);
-		item1 = new Item(250,300, "item",0, 1);
-		item2 = new Item(300,300, "item",0, 1);
+		item = new Item(327,300, "item",0, 1);
+		item1 = new Item(327,250, "item",0, 1);
+		item2 = new Item(327,200, "item",0, 1);
 		
 		//tile = new Tile(0,0,"tilemap", 0, 420, 490, 70, 70);
 		root = new Group();
@@ -120,7 +121,7 @@ public class Juego extends Application{
 		for(int i=0;i<tilemap.length;i++) {
 			for(int j=0;j<tilemap[i].length;j++) {
 				if (tilemap[i][j]!=0)
-					this.tiles.add(new Tile(tilemap[i][j],j*70,i*70,"tilemap",0,70,70));
+					this.tiles.add(new Tile(tilemap[i][j],i*70,j*70,"tilemap",0,70,70));
 				
 			}
 			
