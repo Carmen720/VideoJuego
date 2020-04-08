@@ -43,48 +43,82 @@ public class JugadorAnimado extends ObjetoJuego{
 	
 	public void inicializarAnimaciones() {
 		Rectangle coordenadasCorrer[]= {
-				new Rectangle(0, 3, 48, 65),
-				new Rectangle(49, 3, 48, 65),
-				new Rectangle(102, 3, 45, 66),
-				new Rectangle(152, 3, 44, 66),
-				new Rectangle(204, 4, 36, 66),
-				new Rectangle(253, 4, 36, 66),
-				new Rectangle(306, 4, 32, 66),
-				new Rectangle(3, 89, 46, 69),
-				new Rectangle(52, 89, 47, 69),
-				new Rectangle(102, 90, 45, 64),
-				new Rectangle(152, 90, 44, 64),
-				new Rectangle(203, 91, 43, 63),
-				new Rectangle(252, 91, 43, 63),
-				new Rectangle(306, 91, 36, 66),
-				new Rectangle(3, 177, 43, 66),
-				new Rectangle(52, 177, 44, 67),
-				new Rectangle(102, 178, 45, 63),
-				new Rectangle(152, 177, 44, 64),
-				new Rectangle(203, 178, 43, 63),
-				new Rectangle(252, 178, 43, 63),
-				new Rectangle(305, 178, 37, 65),
-				new Rectangle(152, 90, 44, 64)
+				new Rectangle(5, 134, 30, 64),
+				new Rectangle(49, 137, 31, 63),
+				new Rectangle(94, 135, 30, 63),
+				new Rectangle(138, 136, 30, 63),
+			//	new Rectangle(204, 4, 36, 66),
+			//	new Rectangle(253, 4, 36, 66),
+			//	new Rectangle(306, 4, 32, 66),
+		    //   new Rectangle(3, 89, 46, 69),
+			//	new Rectangle(52, 89, 47, 69),
+			//	new Rectangle(102, 90, 45, 64),
+			//	new Rectangle(152, 90, 44, 64),
+			//	new Rectangle(203, 91, 43, 63),
+			//	new Rectangle(252, 91, 43, 63),
+			//	new Rectangle(306, 91, 36, 66),
+			//	new Rectangle(3, 177, 43, 66),
+			//	new Rectangle(52, 177, 44, 67),
+			//	new Rectangle(102, 178, 45, 63),
+			//	new Rectangle(152, 177, 44, 64),
+			//	new Rectangle(203, 178, 43, 63),
+			//	new Rectangle(252, 178, 43, 63),
+			//	new Rectangle(305, 178, 37, 65),
+			//	new Rectangle(152, 90, 44, 64)//*
 		};
 		
+
 		Animacion animacionCorrer = new Animacion(0.05,coordenadasCorrer);
 		animaciones.put("correr", animacionCorrer);
 		
 		Rectangle coordenadasDescanso[] = {
-				new Rectangle(3, 309, 38, 68),
-				new Rectangle(54, 309, 37, 68),
-				new Rectangle(111, 309, 31, 68),
-				new Rectangle(162, 309, 30, 68),
-				new Rectangle(214, 309, 28, 69),
-				new Rectangle(265, 309, 28, 69),
-				new Rectangle(214, 309, 28, 69),
-				new Rectangle(162, 309, 30, 68),
-				new Rectangle(111, 309, 31, 68),
-				new Rectangle(54, 309, 37, 68)
+				new Rectangle(4, 2, 37, 64),
+				//new Rectangle(54, 309, 37, 68),
+				//new Rectangle(111, 309, 31, 68),
+				//new Rectangle(162, 309, 30, 68),
+				//new Rectangle(214, 309, 28, 69),
+				//new Rectangle(265, 309, 28, 69),
+				//new Rectangle(214, 309, 28, 69),
+				//new Rectangle(162, 309, 30, 68),
+				//new Rectangle(111, 309, 31, 68),
+				//new Rectangle(54, 309, 37, 68)
 		};
 		Animacion animacionDescanso = new Animacion(0.1, coordenadasDescanso);
 		animaciones.put("descanso",animacionDescanso);
+		
+		Rectangle coordenadasAbajo[] = {
+				new Rectangle(4, 2, 37, 64),
+				new Rectangle(51, 4, 31, 63),
+				new Rectangle(95, 2, 33, 64),
+				new Rectangle(141, 3, 29, 64),
+				//new Rectangle(214, 309, 28, 69),
+				//new Rectangle(265, 309, 28, 69),
+				//new Rectangle(214, 309, 28, 69),
+				//new Rectangle(162, 309, 30, 68),
+				//new Rectangle(111, 309, 31, 68),
+				//new Rectangle(54, 309, 37, 68)
+		};
+		Animacion animacionAbajo = new Animacion(0.1, coordenadasAbajo);
+		animaciones.put("abajo",animacionAbajo);
+		
+		Rectangle coordenadasArriba[] = {
+				new Rectangle(5, 201, 35, 64),
+				new Rectangle(51, 203, 31, 63),
+				new Rectangle(95, 210, 33, 64),
+				new Rectangle(139, 203, 29, 64),
+				//new Rectangle(214, 309, 28, 69),
+				//new Rectangle(265, 309, 28, 69),
+				//new Rectangle(214, 309, 28, 69),
+				//new Rectangle(162, 309, 30, 68),
+				//new Rectangle(111, 309, 31, 68),
+				//new Rectangle(54, 309, 37, 68)
+		};
+		Animacion animacionArriba = new Animacion(0.1, coordenadasArriba);
+		animaciones.put("arriba",animacionArriba);
 	}
+	
+	
+
 	
 	public void calcularFrame(double t) {
 		Rectangle coordenadas = animaciones.get(animacionActual).calcularFrameActual(t);
@@ -116,11 +150,11 @@ public class JugadorAnimado extends ObjetoJuego{
 		if (Juego.izquierda)//Mover hacia la derecha
 			x-=velocidad;
 		
-//		if (Juego.arriba)
-//			y-=velocidad;
-//		
-//		if (Juego.abajo)
-//			y+=velocidad;
+		if (Juego.arriba)
+			y-=velocidad;
+		
+		if (Juego.abajo)
+			y+=velocidad;
 	}
 
 	public String getAnimacionActual() {

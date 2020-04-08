@@ -131,7 +131,7 @@ public class Juego extends Application{
 		imagenes.put("fondo-bosque",new Image("fondo-bosque.jpg"));
 		imagenes.put("fondo-bosque2",new Image("fondo-bosque2.jpg"));
 		imagenes.put("tilemap",new Image("tilemap.png"));
-		imagenes.put("personaje", new Image("personaje.png"));
+		imagenes.put("personaje", new Image("tonystark.png"));
 		imagenes.put("item", new Image("item.png"));
 	}
 	
@@ -169,9 +169,13 @@ public class Juego extends Application{
 						break;
 					case "UP":
 						arriba = true;
+						jugadorAnimado.setDireccion(1);
+						jugadorAnimado.setAnimacionActual("arriba");
 						break;
 					case "DOWN":
 						abajo = true;
+						jugadorAnimado.setDireccion(1);
+						jugadorAnimado.setAnimacionActual("abajo");
 						break;
 					case "SPACE":
 						//jugador.setVelocidad(15);
