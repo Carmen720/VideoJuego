@@ -43,6 +43,8 @@ public class Juego extends Application{
 			{0,0,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0},
 			{5,5,5,5,5,5,5,5,5,5},
 			{20,20,20,20,20,20,20,20,20,20},
 			{20,20,20,20,20,20,20,20,20,20},
@@ -61,7 +63,7 @@ public class Juego extends Application{
 		inicializarComponentes();
 		gestionEventos();
 		ventana.setScene(escena);
-		ventana.setTitle("Super juego");
+		ventana.setTitle("Adora");
 		ventana.show();
 		cicloJuego();
 	}
@@ -98,12 +100,12 @@ public class Juego extends Application{
 		imagenes = new HashMap<String,Image>();
 		cargarImagenes();
 		//jugador = new Jugador(20, 40, "goku", 3, 0);
-		jugadorAnimado = new JugadorAnimado(25, 150, "personaje", 3, 0,"descanso");
-		fondo = new Fondo(0,0,"fondo-bosque","background2",5);
+		jugadorAnimado = new JugadorAnimado(25, 285, "personaje", 3, 0,"descanso");
+		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",5);
 		inicializarTiles();
-		item = new Item(200,180, "item",0, 1);
-		item1 = new Item(250,180, "item",0, 1);
-		item2 = new Item(300,180, "item",0, 1);
+		item = new Item(200,300, "item",0, 1);
+		item1 = new Item(250,300, "item",0, 1);
+		item2 = new Item(300,300, "item",0, 1);
 		
 		//tile = new Tile(0,0,"tilemap", 0, 420, 490, 70, 70);
 		root = new Group();
@@ -126,10 +128,8 @@ public class Juego extends Application{
 		
 	}
 	public void cargarImagenes() {
-		imagenes.put("goku", new Image("goku.png"));
-		imagenes.put("goku-furioso", new Image("goku-furioso.png"));
 		imagenes.put("fondo-bosque",new Image("fondo-bosque.jpg"));
-		imagenes.put("background2",new Image("background2.jpg"));
+		imagenes.put("fondo-bosque2",new Image("fondo-bosque2.jpg"));
 		imagenes.put("tilemap",new Image("tilemap.png"));
 		imagenes.put("personaje", new Image("personaje.png"));
 		imagenes.put("item", new Image("item.png"));

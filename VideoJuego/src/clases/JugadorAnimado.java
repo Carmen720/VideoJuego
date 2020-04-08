@@ -64,7 +64,7 @@ public class JugadorAnimado extends ObjetoJuego{
 				new Rectangle(203, 178, 43, 63),
 				new Rectangle(252, 178, 43, 63),
 				new Rectangle(305, 178, 37, 65),
-				new Rectangle(152, 90, 44, 64)	
+				new Rectangle(152, 90, 44, 64)
 		};
 		
 		Animacion animacionCorrer = new Animacion(0.05,coordenadasCorrer);
@@ -81,7 +81,6 @@ public class JugadorAnimado extends ObjetoJuego{
 				new Rectangle(162, 309, 30, 68),
 				new Rectangle(111, 309, 31, 68),
 				new Rectangle(54, 309, 37, 68)
-				
 		};
 		Animacion animacionDescanso = new Animacion(0.1, coordenadasDescanso);
 		animaciones.put("descanso",animacionDescanso);
