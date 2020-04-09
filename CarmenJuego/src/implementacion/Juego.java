@@ -31,7 +31,7 @@ public class Juego extends Application{
 	public static boolean izquierda;
 	public static boolean derecha;
 	public static HashMap<String, Image> imagenes;
-	
+	private Tile tile;
 	private Item item;
 	private Item item1;
 	private Item item2;
@@ -40,11 +40,11 @@ public class Juego extends Application{
 	private ArrayList<Tile> tiles;
 
 	private int tilemap[][] = {
-			{20,20,20,20,4,4,20,20,20,20},
-			{20,20,20,20,4,4,20,20,20,20},
-			{20,20,20,20,4,4,20,20,20,20},
-			{4,4,4,4,4,4,4,4,4,4},
-			{4,4,4,4,4,4,4,4,4,4},
+			{},
+			{20,20,20,20,0,0,20,20,20,20},
+			{20,20,20,20,0,0,20,20,20,20},
+			{4,4,4,4,4,4,0,0,0,0},
+			{4,4,4,4,4,4,0,0,0,0},
 			{20,20,20,20,4,4,20,20,20,20},
 			{20,20,20,20,4,4,20,20,20,20},
 			{20,20,20,20,4,4,20,20,20,20},
@@ -95,6 +95,13 @@ public class Juego extends Application{
 		jugadorAnimado.calcularFrame(t);
 		jugadorAnimado.mover();
 		fondo.mover();
+		for(int i= 0; i<tiles.size() ; i++) {
+			
+				tiles.get(i).mover();
+			    
+		}
+		
+		
 	}
 	
 	public void inicializarComponentes() {
@@ -102,7 +109,7 @@ public class Juego extends Application{
 		cargarImagenes();
 		//jugador = new Jugador(20, 40, "goku", 3, 0);
 		jugadorAnimado = new JugadorAnimado(315, 420, "personaje", 3, 0,"descanso");
-		fondo = new Fondo(0,0,"fondo-bosquen","fmondo-bosque2",5);
+		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",5);
 		inicializarTiles();
 		item = new Item(327,300, "item",0, 1);
 		item1 = new Item(327,250, "item",0, 1);
@@ -121,7 +128,7 @@ public class Juego extends Application{
 		for(int i=0;i<tilemap.length;i++) {
 			for(int j=0;j<tilemap[i].length;j++) {
 				if (tilemap[i][j]!=0)
-					this.tiles.add(new Tile(tilemap[i][j],j*70,i*70,"tilemap",0,70,70));
+					this.tiles.add(new Tile(tilemap[i][j],j*70,i*70,"tilemap",5,70,70));
 				
 			}
 			

@@ -7,10 +7,12 @@ public class Tile extends ObjetoJuego{
 	private int xImagen;
 	private int yImagen;
 	private int tipoTile;
+	private int x2;
 	public Tile(int tipoTile,int x, int y, String nombreImagen, int velocidad, int ancho, int alto) {
 		super(x, y, nombreImagen, velocidad);
 		this.alto = alto;
 		this.ancho = ancho;
+		this.x2 = this.ancho+this.x;
 		
 		switch(tipoTile) {
 			case 1:
@@ -63,7 +65,15 @@ public class Tile extends ObjetoJuego{
 	}
 	@Override
 	public void mover() {
-		// TODO Auto-generated method stub
+		if (Juego.derecha) {
+			x-=velocidad;
+			x-=velocidad;
+		}
+		
+		if (Juego.izquierda) {
+			x+=velocidad;
+			x+=velocidad;
+		}
 		
 	}
 	
