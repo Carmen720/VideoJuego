@@ -37,19 +37,20 @@ public class Juego extends Application{
 	private Item item2;
 		
 	//private Tile tile;
-	public static ArrayList<Tile> tiles;
+	private ArrayList<Tile> tiles;
 
 	private int tilemap[][] = {
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{5,5,5,5,5,5,5,5,5,5},
-			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20}
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{4,4,4,4,4,4,4,4,4,4},
+			{4,4,4,4,4,4,4,4,4,4},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			
 			
 			
 			
@@ -101,7 +102,7 @@ public class Juego extends Application{
 		cargarImagenes();
 		//jugador = new Jugador(20, 40, "goku", 3, 0);
 		jugadorAnimado = new JugadorAnimado(315, 420, "personaje", 3, 0,"descanso");
-		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",5);
+		fondo = new Fondo(0,0,"fondo-bosquen","fmondo-bosque2",5);
 		inicializarTiles();
 		item = new Item(327,300, "item",0, 1);
 		item1 = new Item(327,250, "item",0, 1);
@@ -129,7 +130,7 @@ public class Juego extends Application{
 	}
 	public void cargarImagenes() {
 		imagenes.put("fondo-bosque",new Image("fondo-bosque.jpg"));
-		imagenes.put("fondo-bosque2",new Image("fondo-bosque.jpg"));
+		imagenes.put("fondo-bosque2",new Image("fondo-bosque2.jpg"));
 		imagenes.put("tilemap",new Image("tilemap.png"));
 		imagenes.put("personaje", new Image("sailormoon.png"));
 		imagenes.put("item", new Image("item.png"));
