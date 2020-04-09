@@ -26,8 +26,8 @@ public class Tile extends ObjetoJuego{
 				this.yImagen=140;
 				break;
 			case 4:
-				this.xImagen=70;
-				this.yImagen=420;
+				this.xImagen=490;
+				this.yImagen=279;
 				break;
 			case 5:
 				this.xImagen=280          ;

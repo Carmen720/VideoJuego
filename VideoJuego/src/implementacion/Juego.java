@@ -40,16 +40,16 @@ public class Juego extends Application{
 	private ArrayList<Tile> tiles;
 
 	private int tilemap[][] = {
-			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20},
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20},
-			{20,20,20,20,20,20,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{4,4,4,4,4,4,4,4,4,4},
+			{4,4,4,4,4,4,4,4,4,4},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
+			{20,20,20,20,4,4,20,20,20,20},
 			
 			
 			
@@ -64,7 +64,7 @@ public class Juego extends Application{
 		inicializarComponentes();
 		gestionEventos();
 		ventana.setScene(escena);
-		ventana.setTitle("Adora");
+		ventana.setTitle("adora");
 		ventana.show();
 		cicloJuego();
 	}
@@ -102,7 +102,7 @@ public class Juego extends Application{
 		cargarImagenes();
 		//jugador = new Jugador(20, 40, "goku", 3, 0);
 		jugadorAnimado = new JugadorAnimado(315, 420, "personaje", 3, 0,"descanso");
-		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",5);
+		fondo = new Fondo(0,0,"fondo-bosquen","fmondo-bosque2",5);
 		inicializarTiles();
 		item = new Item(327,300, "item",0, 1);
 		item1 = new Item(327,250, "item",0, 1);
@@ -110,8 +110,8 @@ public class Juego extends Application{
 		
 		//tile = new Tile(0,0,"tilemap", 0, 420, 490, 70, 70);
 		root = new Group();
-		escena = new Scene(root, 700, 500);
-		lienzo = new Canvas(700, 500);
+		escena = new Scene(root, 700,500);
+		lienzo = new Canvas(700,500);
 		root.getChildren().add(lienzo);
 		graficos = lienzo.getGraphicsContext2D();
 	}
@@ -121,7 +121,7 @@ public class Juego extends Application{
 		for(int i=0;i<tilemap.length;i++) {
 			for(int j=0;j<tilemap[i].length;j++) {
 				if (tilemap[i][j]!=0)
-					this.tiles.add(new Tile(tilemap[i][j],i*70,j*70,"tilemap",0,70,70));
+					this.tiles.add(new Tile(tilemap[i][j],j*70,i*70,"tilemap",0,70,70));
 				
 			}
 			

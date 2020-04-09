@@ -143,6 +143,12 @@ public class JugadorAnimado extends ObjetoJuego{
 	public void mover() {
 		if (x>700)
 			x=-80;
+		if (y>500)
+		    y=-80;
+		
+		
+		if (y>500)
+			y=80;
 		
 		if (Juego.derecha)//Mover hacia la derecha
 			x+=velocidad;
