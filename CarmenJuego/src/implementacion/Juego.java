@@ -31,7 +31,6 @@ public class Juego extends Application{
 	public static boolean izquierda;
 	public static boolean derecha;
 	public static HashMap<String, Image> imagenes;
-	private Tile tile;
 	private Item item;
 	private Item item1;
 	private Item item2;
@@ -40,11 +39,10 @@ public class Juego extends Application{
 	private ArrayList<Tile> tiles;
 
 	private int tilemap[][] = {
-			{},
-			{20,20,20,20,0,0,20,20,20,20},
-			{20,20,20,20,0,0,20,20,20,20},
-			{4,4,4,4,4,4,0,0,0,0},
-			{4,4,4,4,4,4,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0},
 			{20,20,20,20,4,4,20,20,20,20},
 			{20,20,20,20,4,4,20,20,20,20},
 			{20,20,20,20,4,4,20,20,20,20},
