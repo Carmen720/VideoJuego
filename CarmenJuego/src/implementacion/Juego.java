@@ -137,10 +137,10 @@ public class Juego extends Application{
 	public void inicializarComponentes() {
 		imagenes = new HashMap<String,Image>();
 		cargarImagenes();
-		jugadorAnimado = new JugadorAnimado(140, 360, "personaje", 3, 0,"descanso");
+		jugadorAnimado = new JugadorAnimado(140, 297, "personaje", 3, 0,"descanso");
 		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",2);
 		inicializarTiles();
-		item = new Item(280,100, "item",2, 1);
+		item = new Item(280,40, "item",2, 1);
 		item1 = new Item(470,250, "item",2, 1);
 		item2 = new Item(420,250, "item",2, 1);
 		
@@ -169,7 +169,7 @@ public class Juego extends Application{
 	    for(int i=0;i<tilemap2.length;i++) {
 		    for(int j=0;j<tilemap2[i].length;j++) {
 			    if (tilemap2[i][j]!=0) {
-				    this.tile2.add(new Tile(tilemap2[i][j],j*225,(i*312),"tilemap2",2,267,309));
+				    this.tile2.add(new Tile(tilemap2[i][j],j*68,i*40,"tilemap2",2,68,40));
 			
 		    }
 		 
