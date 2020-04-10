@@ -45,14 +45,14 @@ public class Juego extends Application{
 			{9,0,0,0,0,0,0,0,9},
 			{9,0,0,0,0,0,0,0,9},
 			{9,0,0,0,0,0,0,0,9},
+			{9,0,7,4,4,4,6,0,9},
 			{9,0,0,0,0,0,0,0,9},
+			{9,0,0,0,0,0,0,5,9},
+			{9,8,0,0,0,0,7,4,9},
+			{9,4,4,6,0,0,0,0,9},
 			{9,0,0,0,0,0,0,0,9},
-			{9,0,0,0,0,0,0,0,9},
-			{9,0,0,0,0,0,0,0,9},
-			{9,9,9,9,9,9,9,9,9},
-			{9,9,9,9,9,9,9,9,9},
-			{9,9,9,9,9,9,9,9,9},
-			{9,9,9,9,9,9,9,9,9},
+			{9,2,2,2,2,2,2,2,9},
+			{9,1,1,1,1,1,1,1,9},
 			{9,9,9,9,9,9,9,9,9},
 					
 		
@@ -71,8 +71,8 @@ public class Juego extends Application{
 			{0,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0},
-			{0,0,0,10,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,10,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0},
 			
 			
@@ -130,22 +130,21 @@ public class Juego extends Application{
 	     tile2.get(i).mover();    
 		 }
 		item.mover();
-		
-		
+		item1.mover();
+		item2.mover();
 	}
 	
 	public void inicializarComponentes() {
 		imagenes = new HashMap<String,Image>();
 		cargarImagenes();
-		//jugador = new Jugador(20, 40, "goku", 3, 0);
-		jugadorAnimado = new JugadorAnimado(140, 435, "personaje", 3, 0,"descanso");
+		jugadorAnimado = new JugadorAnimado(140, 360, "personaje", 3, 0,"descanso");
 		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",2);
 		inicializarTiles();
-		item = new Item(520,300, "item",2, 1);
-		item1 = new Item(470,300, "item",0, 1);
-		item2 = new Item(420,300, "item",0, 1);
+		item = new Item(280,100, "item",2, 1);
+		item1 = new Item(470,250, "item",2, 1);
+		item2 = new Item(420,250, "item",2, 1);
 		
-		//tile = new Tile(0,0,"tilemap", 0, 420, 490, 70, 70);
+		
 		root = new Group();
 		escena = new Scene(root, 630,700);
 		lienzo = new Canvas(630,700);
@@ -170,7 +169,7 @@ public class Juego extends Application{
 	    for(int i=0;i<tilemap2.length;i++) {
 		    for(int j=0;j<tilemap2[i].length;j++) {
 			    if (tilemap2[i][j]!=0) {
-				    this.tiles.add(new Tile(tilemap2[i][j],j*225,(i*312),"tilemap2",2,66,71));
+				    this.tile2.add(new Tile(tilemap2[i][j],j*225,(i*312),"tilemap2",2,267,309));
 			
 		    }
 		 
@@ -182,6 +181,7 @@ public class Juego extends Application{
 		imagenes.put("fondo-bosque",new Image("fondo-bosque.jpg"));
 		imagenes.put("fondo-bosque2",new Image("fondo-bosque2.jpg"));
 		imagenes.put("tilemap",new Image("tilemap.png"));
+		imagenes.put("tilemap2",new Image("tilemap2.png"));
 		imagenes.put("personaje", new Image("sailormoon.png"));
 		imagenes.put("item", new Image("item.png"));
 	}
@@ -192,8 +192,8 @@ public class Juego extends Application{
 		//tile.pintar(graficos);
 		for(int i=0;i<tiles.size();i++)
 		tiles.get(i).pintar(graficos);
-		for(int i=0;i<tile2.size();i++)
-		tile2.get(i).pintar(graficos);
+		for(int i=0;i<tile2.size();i++) {
+		tile2.get(i).pintar(graficos);}
 		jugadorAnimado.pintar(graficos);
 		item.pintar(graficos);
 		item1.pintar(graficos);

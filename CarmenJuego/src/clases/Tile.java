@@ -18,8 +18,8 @@ public class Tile extends ObjetoJuego{
 		
 		switch(tipoTile) {
 			case 1:
-				this.xImagen = 350;
-				this.yImagen = 344;
+				this.xImagen = 490;
+				this.yImagen = 210;
 				break;
 			case 2:
 				this.xImagen=420;
@@ -34,8 +34,8 @@ public class Tile extends ObjetoJuego{
 				this.yImagen=558;
 				break;
 			case 5:
-				this.xImagen=350;
-				this.yImagen=487;
+				this.xImagen=420;
+				this.yImagen=489;
 				break;
 			case 6:
 				this.xImagen=350;
@@ -43,7 +43,7 @@ public class Tile extends ObjetoJuego{
 				break;
 			case 7:
 				this.xImagen=350;
-				this.yImagen=558;
+				this.yImagen=698;
 				break;
 			case 8:
 				this.xImagen=279;
@@ -53,12 +53,16 @@ public class Tile extends ObjetoJuego{
 				this.xImagen=560;
 				this.yImagen=838;
 				break;
+			case 10:
+				this.xImagen=350;
+				this.yImagen=628;
+				break;
 		}
 		
 		switch(tipoTile) {
 		case 10:
-			this.xImagen = 60;
-			this.yImagen = 435;
+			this.xImagen = 240;
+			this.yImagen = 945;
 			break;
 		}
 	}
