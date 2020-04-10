@@ -29,7 +29,16 @@ public class Item extends ObjetoJuego{
 
 	@Override
 	public void mover() {
+	
+		if (Juego.abajo) {
+			y-=velocidad;
+			
+		}
 		
+		if (Juego.arriba) {
+			y+=velocidad;
+			
+	}
 	}
 	
 	public Rectangle obtenerRectangulo() {
