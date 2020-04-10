@@ -95,8 +95,7 @@ public class Juego extends Application{
 		jugadorAnimado.mover();
 		fondo.mover();
 		for(int i= 0; i<tiles.size() ; i++) {
-			
-				tiles.get(i).mover();
+		 tiles.get(i).mover();
 			    
 		}
 		
