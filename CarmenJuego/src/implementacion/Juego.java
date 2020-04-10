@@ -37,31 +37,52 @@ public class Juego extends Application{
 		
 	//private Tile tile;
 	private ArrayList<Tile> tiles;
+	private ArrayList<Tile> tile2;
 
 	private int tilemap[][] = {
-			{20,0,0,0,20,0,0,0,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,0,0,0,5,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,0,0,0,0,20},
-			{20,0,0,0,20,0,0,0,20},
+			{9,0,0,0,9,0,0,0,9},
+			{9,0,0,0,0,0,0,0,9},
+			{9,0,0,0,0,0,0,0,9},
+			{9,0,0,0,0,0,0,0,9},
+			{9,0,0,0,0,0,0,0,9},
+			{9,0,0,0,0,0,0,0,9},
+			{9,0,0,0,0,0,0,0,9},
+			{9,0,0,0,0,0,0,0,9},
+			{9,0,0,0,0,0,0,0,9},
+			{9,9,9,9,9,9,9,9,9},
+			{9,9,9,9,9,9,9,9,9},
+			{9,9,9,9,9,9,9,9,9},
+			{9,9,9,9,9,9,9,9,9},
+			{9,9,9,9,9,9,9,9,9},
+					
+		
+	};
+	
+	private int tilemap2[][]= {
 			
-
-
-			
-			
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,10,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
 			
 			
 			
 	};
+			
+	
+	
+	
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -103,9 +124,11 @@ public class Juego extends Application{
 		jugadorAnimado.mover();
 		fondo.mover();
 		for(int i= 0; i<tiles.size() ; i++) {
-		 tiles.get(i).mover();
-			    
+		 tiles.get(i).mover();    
 		}
+		for(int i= 0; i<tile2.size() ; i++) {
+	     tile2.get(i).mover();    
+		 }
 		item.mover();
 		
 		
@@ -134,7 +157,7 @@ public class Juego extends Application{
 		tiles = new ArrayList<Tile>();
 		for(int i=0;i<tilemap.length;i++) {
 			for(int j=0;j<tilemap[i].length;j++) {
-				if (tilemap[i][j]!=0)
+				if (tilemap[i][j]!=0) {
 					this.tiles.add(new Tile(tilemap[i][j],j*70,(i*70)-280,"tilemap",2,70,70));
 				
 			}
@@ -142,6 +165,19 @@ public class Juego extends Application{
 		}
 		
 	}
+	
+	     tile2 = new ArrayList<Tile>();
+	    for(int i=0;i<tilemap2.length;i++) {
+		    for(int j=0;j<tilemap2[i].length;j++) {
+			    if (tilemap2[i][j]!=0) {
+				    this.tiles.add(new Tile(tilemap2[i][j],j*225,(i*312),"tilemap2",2,66,71));
+			
+		    }
+		 
+	    }
+ 	
+     }
+}
 	public void cargarImagenes() {
 		imagenes.put("fondo-bosque",new Image("fondo-bosque.jpg"));
 		imagenes.put("fondo-bosque2",new Image("fondo-bosque2.jpg"));
@@ -156,7 +192,8 @@ public class Juego extends Application{
 		//tile.pintar(graficos);
 		for(int i=0;i<tiles.size();i++)
 		tiles.get(i).pintar(graficos);
-		//jugador.pintar(graficos);
+		for(int i=0;i<tile2.size();i++)
+		tile2.get(i).pintar(graficos);
 		jugadorAnimado.pintar(graficos);
 		item.pintar(graficos);
 		item1.pintar(graficos);
