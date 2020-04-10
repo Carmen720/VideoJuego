@@ -8,6 +8,8 @@ public class Tile extends ObjetoJuego{
 	private int yImagen;
 	private int tipoTile;
 	private int x2;
+	
+	
 	public Tile(int tipoTile,int x, int y, String nombreImagen, int velocidad, int ancho, int alto) {
 		super(x, y, nombreImagen, velocidad);
 		this.alto = alto;
@@ -16,28 +18,36 @@ public class Tile extends ObjetoJuego{
 		
 		switch(tipoTile) {
 			case 1:
-				this.xImagen = 0;
-				this.yImagen = 0;
+				this.xImagen = 350;
+				this.yImagen = 344;
 				break;
 			case 2:
-				this.xImagen=0;
-				this.yImagen=70;
+				this.xImagen=420;
+				this.yImagen=558;
 				break;
 			case 3:
-				this.xImagen=0;
-				this.yImagen=140;
+				this.xImagen=350;
+				this.yImagen=697;
 				break;
 			case 4:
-				this.xImagen=490;
-				this.yImagen=279;
+				this.xImagen=280;
+				this.yImagen=558;
+				break;
+			case 6:
+				this.xImagen=350;
+				this.yImagen=487;
+				break;
+			case 7:
+				this.xImagen=350;
+				this.yImagen=558;
 				break;
 			case 5:
-				this.xImagen=280          ;
-				this.yImagen=556;
+				this.xImagen=350;
+				this.yImagen=558;
 				break;
 			case 10:
-				this.xImagen=561;
-				this.yImagen=558;
+				this.xImagen=279;
+				this.yImagen=210;
 				break;
 			case 20:
 				this.xImagen=560;
@@ -66,14 +76,14 @@ public class Tile extends ObjetoJuego{
 	@Override
 	public void mover() {
 	//	if (Juego.abajo) {
-		//	y-=velocidad;
-			
-		//}
-		
-	//	if (Juego.arriba) {
-		//	y+=velocidad;
+	//		y-=velocidad;
 			
 	//	}
+		
+	//	if (Juego.arriba) {
+	//		y+=velocidad;
+			
+//	}
 		
 	}
 	

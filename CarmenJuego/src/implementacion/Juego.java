@@ -39,17 +39,20 @@ public class Juego extends Application{
 	private ArrayList<Tile> tiles;
 
 	private int tilemap[][] = {
-			{20,20,0,0,0,20,20},
-			{20,20,0,0,0,20,20},
-			{20,20,0,0,0,20,20},
-			{20,20,0,0,0,20,20},
-			{20,20,0,0,0,20,20},
-			{20,20,0,0,0,20,20},
-			{20,20,0,0,0,20,20},
-			{20,20,0,0,0,20,20},
-			{20,20,0,0,0,20,20},
-			{20,20,0,0,0,20,20},
-			{20,20,0,0,0,20,20}
+			{20,0,0,0,0,0,0,0,20},
+			{20,0,0,0,0,0,0,0,20},
+			{20,0,0,0,0,0,0,0,20},
+			{20,4,6,0,0,0,0,0,20},
+			{20,0,0,0,0,0,0,0,20},
+			{20,0,0,0,0,0,3,4,20},
+			{20,10,0,0,0,0,0,0,20},
+			{20,4,4,4,5,0,0,0,20},
+			{20,0,0,0,0,0,0,0,20},
+			{20,2,2,2,2,2,2,2,20},
+			{20,20,20,20,20,20,20,20,20}
+			
+			
+			
 			
 			
 			
@@ -106,17 +109,17 @@ public class Juego extends Application{
 		imagenes = new HashMap<String,Image>();
 		cargarImagenes();
 		//jugador = new Jugador(20, 40, "goku", 3, 0);
-		jugadorAnimado = new JugadorAnimado(220, 600, "personaje", 3, 0,"descanso");
-		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",5);
+		jugadorAnimado = new JugadorAnimado(140, 435, "personaje", 3, 0,"descanso");
+		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",2);
 		inicializarTiles();
-		item = new Item(230,300, "item",0, 1);
-		item1 = new Item(230,250, "item",0, 1);
-		item2 = new Item(230,200, "item",0, 1);
+		item = new Item(520,300, "item",0, 1);
+		item1 = new Item(470,300, "item",0, 1);
+		item2 = new Item(420,300, "item",0, 1);
 		
 		//tile = new Tile(0,0,"tilemap", 0, 420, 490, 70, 70);
 		root = new Group();
-		escena = new Scene(root, 490,700);
-		lienzo = new Canvas(490,700);
+		escena = new Scene(root, 630,944);
+		lienzo = new Canvas(630,944);
 		root.getChildren().add(lienzo);
 		graficos = lienzo.getGraphicsContext2D();
 	}
