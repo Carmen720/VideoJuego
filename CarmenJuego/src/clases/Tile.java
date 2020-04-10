@@ -89,7 +89,7 @@ public class Tile extends ObjetoJuego{
 		if (Juego.abajo) {
 			y-=velocidad;
 			
-		}
+	}
 		
 		if (Juego.arriba) {
 			y+=velocidad;

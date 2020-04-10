@@ -169,7 +169,7 @@ public class Juego extends Application{
 	    for(int i=0;i<tilemap2.length;i++) {
 		    for(int j=0;j<tilemap2[i].length;j++) {
 			    if (tilemap2[i][j]!=0) {
-				    this.tile2.add(new Tile(tilemap2[i][j],j*68,i*40,"tilemap2",2,68,40));
+				    this.tile2.add(new Tile(tilemap2[i][j],j*132,i*140,"tilemap2",2,132,140));
 			
 		    }
 		 
