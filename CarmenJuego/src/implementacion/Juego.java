@@ -39,16 +39,17 @@ public class Juego extends Application{
 	private ArrayList<Tile> tiles;
 
 	private int tilemap[][] = {
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0},
-			{20,20,20,20,4,4,20,20,20,20},
-			{20,20,20,20,4,4,20,20,20,20},
-			{20,20,20,20,4,4,20,20,20,20},
-			{20,20,20,20,4,4,20,20,20,20},
-			{20,20,20,20,4,4,20,20,20,20},
-			
+			{20,20,0,0,0,20,20},
+			{20,20,0,0,0,20,20},
+			{20,20,0,0,0,20,20},
+			{20,20,0,0,0,20,20},
+			{20,20,0,0,0,20,20},
+			{20,20,0,0,0,20,20},
+			{20,20,0,0,0,20,20},
+			{20,20,0,0,0,20,20},
+			{20,20,0,0,0,20,20},
+			{20,20,0,0,0,20,20},
+			{20,20,0,0,0,20,20}
 			
 			
 			
@@ -146,7 +147,7 @@ public class Juego extends Application{
 		fondo.pintar(graficos);
 		//tile.pintar(graficos);
 		for(int i=0;i<tiles.size();i++)
-		//	tiles.get(i).pintar(graficos);
+		tiles.get(i).pintar(graficos);
 		//jugador.pintar(graficos);
 		jugadorAnimado.pintar(graficos);
 		item.pintar(graficos);

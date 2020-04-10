@@ -16,8 +16,8 @@ public class Fondo extends ObjetoJuego{
 
 	@Override
 	public void pintar(GraphicsContext graficos) {
-		graficos.drawImage(Juego.imagenes.get(this.nombreImagen), this.x, this.y);
-		graficos.drawImage(Juego.imagenes.get(this.nombreImagen2), this.x, this.y2);
+		graficos.drawImage(Juego.imagenes.get(this.nombreImagen), this.x, this.y, 425 ,626,this.x,this.y,500,700);
+		graficos.drawImage(Juego.imagenes.get(this.nombreImagen2),this.x, this.y2,425 ,626,this.x,this.y2,500,700);
 
 	}
 

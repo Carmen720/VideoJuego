@@ -65,14 +65,14 @@ public class Tile extends ObjetoJuego{
 	}
 	@Override
 	public void mover() {
-		if (Juego.derecha) {
-			x-=velocidad;
-			x-=velocidad;
+		if (Juego.abajo) {
+			y-=velocidad;
+			
 		}
 		
-		if (Juego.izquierda) {
-			x+=velocidad;
-			x+=velocidad;
+		if (Juego.arriba) {
+			y+=velocidad;
+			
 		}
 		
 	}
