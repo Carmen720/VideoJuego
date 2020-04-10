@@ -141,14 +141,12 @@ public class JugadorAnimado extends ObjetoJuego{
 	//Se ejecuta por cada iteracion del ciclo de juego
 	@Override
 	public void mover() {
-		if (x>700)
+		if (x>500)
 			x=-80;
-		if (y>500)
-		    y=-80;
+		if (y<-15)
+		    y=700;
 		
 		
-		if (y>500)
-			y=80;
 		
 		if (Juego.derecha)//Mover hacia la derecha
 			x+=velocidad;

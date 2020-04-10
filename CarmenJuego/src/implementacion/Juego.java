@@ -115,8 +115,8 @@ public class Juego extends Application{
 		
 		//tile = new Tile(0,0,"tilemap", 0, 420, 490, 70, 70);
 		root = new Group();
-		escena = new Scene(root, 700,500);
-		lienzo = new Canvas(700,500);
+		escena = new Scene(root, 500,700);
+		lienzo = new Canvas(500,700);
 		root.getChildren().add(lienzo);
 		graficos = lienzo.getGraphicsContext2D();
 	}
@@ -146,7 +146,7 @@ public class Juego extends Application{
 		fondo.pintar(graficos);
 		//tile.pintar(graficos);
 		for(int i=0;i<tiles.size();i++)
-			tiles.get(i).pintar(graficos);
+		//	tiles.get(i).pintar(graficos);
 		//jugador.pintar(graficos);
 		jugadorAnimado.pintar(graficos);
 		item.pintar(graficos);
