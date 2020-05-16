@@ -16,8 +16,8 @@ public class Fondo extends ObjetoJuego{
 
 	@Override
 	public void pintar(GraphicsContext graficos) {
-		graficos.drawImage(Juego.imagenes.get(this.nombreImagen), this.x, this.y, 630,944,this.x,this.y,630,944);
-		graficos.drawImage(Juego.imagenes.get(this.nombreImagen2),this.x, this.y2,630 ,944,this.x,this.y2,630,944);
+		graficos.drawImage(Juego.imagenes.get(this.nombreImagen), this.x, this.y, 630,944,this.x,this.y,800,1000);
+		graficos.drawImage(Juego.imagenes.get(this.nombreImagen2),this.x, this.y2,630 ,944,this.x,this.y2,800,1000);
 
 	}
 
@@ -30,14 +30,16 @@ public class Fondo extends ObjetoJuego{
 			y2=-alto;
 		}
 		if (Juego.abajo) {
-			y-=velocidad;
-			y2-=velocidad;
-		}
+			if(JugadorAnimado.yestatica>700) {
+			y-=700;
+			y2-=700;
+		}}
 		
 		if (Juego.arriba) {
-			y+=velocidad;
-			y2+=velocidad;
-		}
+			if(JugadorAnimado.yestatica<0) {
+			y+=700;
+			y2+=700;
+		}}
 	}
 	
 }

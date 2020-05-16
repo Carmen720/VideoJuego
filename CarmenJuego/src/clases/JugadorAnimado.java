@@ -17,6 +17,10 @@ public class JugadorAnimado extends ObjetoJuego{
 	private int altoImagen;
 	private String animacionActual;
 	private int direccion=1;
+	private int arp =0;
+	private String ultimaAnimacion = "descanso";
+	public static int xestatica;
+	public static int yestatica;
 	
 	public int getDireccion() {
 		return direccion;
@@ -72,7 +76,7 @@ public class JugadorAnimado extends ObjetoJuego{
 		animaciones.put("correr", animacionCorrer);
 		
 		Rectangle coordenadasDescanso[] = {
-				new Rectangle(1, 135, 36, 65),
+				new Rectangle(0, 204, 45, 62),
 				//new Rectangle(54, 309, 37, 68),
 				//new Rectangle(111, 309, 31, 68),
 				//new Rectangle(162, 309, 30, 68),
@@ -141,10 +145,17 @@ public class JugadorAnimado extends ObjetoJuego{
 	//Se ejecuta por cada iteracion del ciclo de juego
 	@Override
 	public void mover() {
-		if (x>500)
+	    xestatica = this.x;
+	    yestatica = this.y;
+		
+		
+		
+		if (x>600)
 			x=-80;
-		if (y<-15)
-		    y=700;
+		if (y<0)
+		   y=700;
+		if(y>700)
+			y=0;
 		
 		
 		
@@ -160,7 +171,8 @@ public class JugadorAnimado extends ObjetoJuego{
 		if (Juego.abajo)
 			y+=velocidad;
 	}
-
+	
+	
 	public String getAnimacionActual() {
 		return animacionActual;
 	}

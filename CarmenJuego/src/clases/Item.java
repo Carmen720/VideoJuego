@@ -31,14 +31,15 @@ public class Item extends ObjetoJuego{
 	public void mover() {
 	
 		if (Juego.abajo) {
-			y-=velocidad;
-			
-		}
+			if(JugadorAnimado.yestatica>700) {
+			y-=700;
+		}}
 		
 		if (Juego.arriba) {
-			y+=velocidad;
+			if(JugadorAnimado.yestatica<0) {
+				y+=700;
 			
-	}
+	}}
 	}
 	
 	public Rectangle obtenerRectangulo() {

@@ -34,26 +34,40 @@ public class Juego extends Application{
 	private Item item;
 	private Item item1;
 	private Item item2;
+	private Item item3;
+	private Tile tile;
 		
 	//private Tile tile;
 	private ArrayList<Tile> tiles;
 	private ArrayList<Tile> tile2;
 
 	private int tilemap[][] = {
-			{9,0,0,0,9,0,0,0,9},
-			{9,0,0,0,0,0,0,0,9},
-			{9,0,0,0,0,0,0,0,9},
-			{9,0,0,0,0,0,0,0,9},
-			{9,0,0,0,0,0,0,0,9},
-			{9,0,7,4,4,4,6,0,9},
-			{9,0,0,0,0,0,0,0,9},
-			{9,0,0,0,0,0,0,5,9},
-			{9,8,0,0,0,0,7,4,9},
-			{9,4,4,6,0,0,0,0,9},
-			{9,0,0,0,0,0,0,0,9},
-			{9,2,2,2,2,2,2,2,9},
-			{9,1,1,1,1,1,1,1,9},
-			{9,9,9,9,9,9,9,9,9},
+			{0,0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0},
+			{10,10,0,0,0,0,0,0,0,10,10},
+			{10,10,0,0,0,0,0,0,0,10,10},
+			{10,10,0,0,0,0,0,0,0,10,10},
+			{10,10,0,0,0,0,0,0,0,10,10},
+			{10,10,0,0,0,0,0,14,0,10,10},
+			{10,10,0,0,0,0,0,0,0,10,10},
+			{10,10,0,0,0,14,0,0,0,10,10},
+			{10,10,0,0,0,0,0,0,0,10,10},
+			{10,10,13,0,0,0,0,14,0,10,10},
+			{10,10,11,11,11,12,0,0,0,10,10},
+			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,0,7,4,4,4,6,0,9,9},
+			{9,9,0,0,0,0,0,0,5,9,9},
+			{9,9,0,0,0,0,0,7,4,9,9},
+			{9,9,8,0,0,0,0,0,0,9,9},
+			{9,9,4,4,4,6,0,0,0,9,9},
+			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,2,2,2,2,2,2,2,9,9},
+			{9,9,1,1,1,1,1,1,1,9,9},
+			{9,9,9,9,9,9,9,9,9,9,9},
 					
 		
 	};
@@ -72,10 +86,20 @@ public class Juego extends Application{
 			{0,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0},
-			{0,0,0,10,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0},
-			
-			
+			{0,0,0,0,9,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,11,0,0,0,0,0,0,0},
+			{0,11,0,0,0,0,0,0,0},
+			{0,11,0,0,0,0,0,0,0},
+			{0,11,0,0,0,0,0,0,0},
+			{0,11,0,0,0,0,0,0,0},
+			{0,11,0,0,0,0,0,0,0},
+			{0,11,0,11,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0},
+			{0,11,0,0,0,0,0,0,0},
 			
 	};
 			
@@ -92,7 +116,7 @@ public class Juego extends Application{
 		inicializarComponentes();
 		gestionEventos();
 		ventana.setScene(escena);
-		ventana.setTitle("adora");
+		ventana.setTitle("Excalibur");
 		ventana.show();
 		cicloJuego();
 	}
@@ -120,34 +144,39 @@ public class Juego extends Application{
 		jugadorAnimado.verificarColisionesItem(item);
 		jugadorAnimado.verificarColisionesItem(item1);
 		jugadorAnimado.verificarColisionesItem(item2);
+		jugadorAnimado.verificarColisionesItem(item3);
 		jugadorAnimado.calcularFrame(t);
 		jugadorAnimado.mover();
 		fondo.mover();
 		for(int i= 0; i<tiles.size() ; i++) {
 		 tiles.get(i).mover();    
 		}
+		
+		
 		for(int i= 0; i<tile2.size() ; i++) {
 	     tile2.get(i).mover();    
 		 }
 		item.mover();
 		item1.mover();
 		item2.mover();
+		item3.mover();
 	}
 	
 	public void inicializarComponentes() {
 		imagenes = new HashMap<String,Image>();
 		cargarImagenes();
-		jugadorAnimado = new JugadorAnimado(140, 297, "personaje", 3, 0,"descanso");
-		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",2);
+		jugadorAnimado = new JugadorAnimado(240, 317, "personaje", 3, 0,"descanso");
+		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",3);
 		inicializarTiles();
-		item = new Item(280,40, "item",2, 1);
-		item1 = new Item(470,250, "item",2, 1);
-		item2 = new Item(420,250, "item",2, 1);
+		item = new Item(270,20, "item",0, 1);
+		item1 = new Item(360,20, "item",0, 1);
+		item2 = new Item(460,20, "item",0, 1);
+		item3 = new Item(520,150, "item",0, 1);
 		
 		
 		root = new Group();
-		escena = new Scene(root, 630,700);
-		lienzo = new Canvas(630,700);
+		escena = new Scene(root, 770,700);
+		lienzo = new Canvas(770,700);
 		root.getChildren().add(lienzo);
 		graficos = lienzo.getGraphicsContext2D();
 	}
@@ -157,7 +186,7 @@ public class Juego extends Application{
 		for(int i=0;i<tilemap.length;i++) {
 			for(int j=0;j<tilemap[i].length;j++) {
 				if (tilemap[i][j]!=0) {
-					this.tiles.add(new Tile(tilemap[i][j],j*70,(i*70)-280,"tilemap",2,70,70));
+					this.tiles.add(new Tile(tilemap[i][j],j*70,(i*70)-1120,"tilemap",0,70,70));
 				
 			}
 			
@@ -169,7 +198,7 @@ public class Juego extends Application{
 	    for(int i=0;i<tilemap2.length;i++) {
 		    for(int j=0;j<tilemap2[i].length;j++) {
 			    if (tilemap2[i][j]!=0) {
-				    this.tile2.add(new Tile(tilemap2[i][j],j*132,i*140,"tilemap2",2,132,140));
+				    this.tile2.add(new Tile(tilemap2[i][j],i*135,j*141,"tilemap2",2,135,141));
 			
 		    }
 		 
@@ -190,15 +219,17 @@ public class Juego extends Application{
 		//graficos.fillRect(0,0,100,100);
 		fondo.pintar(graficos);
 		//tile.pintar(graficos);
-		for(int i=0;i<tiles.size();i++)
+		for(int i=0;i<tiles.size();i++) 
 		tiles.get(i).pintar(graficos);
-		for(int i=0;i<tile2.size();i++) {
-		tile2.get(i).pintar(graficos);}
+		for(int i=0;i<tile2.size();i++) 
+		tile2.get(i).pintar(graficos);
 		jugadorAnimado.pintar(graficos);
 		item.pintar(graficos);
 		item1.pintar(graficos);
 		item2.pintar(graficos);
+		item3.pintar(graficos);
 		graficos.fillText("Vidas: " + jugadorAnimado.getVidas(), 20, 20);
+		
 	}
 	
 	public void gestionEventos() {
