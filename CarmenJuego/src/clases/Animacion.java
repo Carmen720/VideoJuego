@@ -12,6 +12,12 @@ public class Animacion {
 		this.duracion = duracion;
 		this.coordenadas = coordenadas;
 	}
+	public Animacion(String string, Rectangle[] coordenadasMover, double d) {
+		
+	}
+	public void setDuracion(double duracion) {
+		this.duracion = duracion;
+	}
 	public double getDuracion() {
 		return duracion;
 	}

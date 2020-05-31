@@ -19,6 +19,7 @@ public class JugadorAnimado extends ObjetoJuego{
 	private int direccion=1;
 	private int arp =0;
 	private String ultimaAnimacion = "descanso";
+	private Item item;
 	public static int xestatica;
 	public static int yestatica;
 	
@@ -188,4 +189,8 @@ public class JugadorAnimado extends ObjetoJuego{
 		}
 			//System.out.println("Estan colisionando");
 	}
+
+	
+		
+	
 }

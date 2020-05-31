@@ -3,6 +3,7 @@ package implementacion;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import clases.EnemigoAnimado1;
 import clases.Fondo;
 import clases.Item;
 import clases.JugadorAnimado;
@@ -35,29 +36,45 @@ public class Juego extends Application{
 	private Item item1;
 	private Item item2;
 	private Item item3;
+	private Item item4;
+	private Item item5;
+	private Item item6;
+	private Item item7;
+	private Item item8;
+	private Item item9;
+	private Item item10;
+	private Item item11;
+	private Item item12;
 	private Tile tile;
+	int randomx,randomy,randomyy;
+	int randomxV,randomyV,randomyyV;
 		
 	//private Tile tile;
 	private ArrayList<Tile> tiles;
 	private ArrayList<Tile> tile2;
+	private ArrayList<EnemigoAnimado1> enemigos1;
 
 	private int tilemap[][] = {
-			{0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0},
-			{10,10,0,0,0,0,0,0,0,10,10},
-			{10,10,0,0,0,0,0,0,0,10,10},
-			{10,10,0,0,0,0,0,0,0,10,10},
+			{9,9,9,9,9,9,9,9,9,9,9},
+			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,0,0,4,4,4,0,0,9,9},
+			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,0,0,0,0,4,4,4,9,9},
+			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,4,4,0,0,0,0,0,9,9},
+			{9,9,0,0,0,0,0,0,0,9,9},
 			{10,10,0,0,0,0,0,0,0,10,10},
 			{10,10,0,0,0,0,0,14,0,10,10},
-			{10,10,0,0,0,0,0,0,0,10,10},
+			{10,10,0,15,0,0,0,0,0,10,10},
 			{10,10,0,0,0,14,0,0,0,10,10},
 			{10,10,0,0,0,0,0,0,0,10,10},
 			{10,10,13,0,0,0,0,14,0,10,10},
 			{10,10,11,11,11,12,0,0,0,10,10},
-			{9,9,0,0,0,0,0,0,0,9,9},
-			{9,9,0,0,0,0,0,0,0,9,9},
-			{9,9,0,0,0,0,0,0,0,9,9},
+			{10,10,0,0,0,0,0,0,0,10,10},
+			{10,10,0,0,0,0,0,14,0,10,10},
+			{10,10,0,0,14,0,0,0,0,10,10},
 			{9,9,0,0,0,0,0,0,0,9,9},
 			{9,9,0,7,4,4,4,6,0,9,9},
 			{9,9,0,0,0,0,0,0,5,9,9},
@@ -145,6 +162,15 @@ public class Juego extends Application{
 		jugadorAnimado.verificarColisionesItem(item1);
 		jugadorAnimado.verificarColisionesItem(item2);
 		jugadorAnimado.verificarColisionesItem(item3);
+		jugadorAnimado.verificarColisionesItem(item4);
+		jugadorAnimado.verificarColisionesItem(item5);
+		jugadorAnimado.verificarColisionesItem(item6);
+		jugadorAnimado.verificarColisionesItem(item7);
+		jugadorAnimado.verificarColisionesItem(item8);
+		jugadorAnimado.verificarColisionesItem(item9);
+		jugadorAnimado.verificarColisionesItem(item10);
+		jugadorAnimado.verificarColisionesItem(item11);
+		jugadorAnimado.verificarColisionesItem(item12);
 		jugadorAnimado.calcularFrame(t);
 		jugadorAnimado.mover();
 		fondo.mover();
@@ -160,6 +186,16 @@ public class Juego extends Application{
 		item1.mover();
 		item2.mover();
 		item3.mover();
+		item4.mover();
+		item5.mover();
+		item6.mover();
+		item7.mover();
+		item8.mover();
+		item9.mover();
+		item10.mover();
+		item11.mover();
+		item12.mover();
+		
 	}
 	
 	public void inicializarComponentes() {
@@ -172,6 +208,16 @@ public class Juego extends Application{
 		item1 = new Item(360,20, "item",0, 1);
 		item2 = new Item(460,20, "item",0, 1);
 		item3 = new Item(520,150, "item",0, 1);
+		item4 = new Item(200,-315, "item",0, 1);
+		item5 = new Item(260,-315, "item",0, 1);
+		item6 = new Item(320,-315, "item",0, 1);
+		item7 = new Item(200,-315, "item",0, 1);
+		item8 = new Item(310,-100, "item",0, 1);
+		item9 = new Item(460,20, "item",0, 1);
+		item10 = new Item(520,150, "item",0, 1);
+		item11 = new Item(200,-315, "item",0, 1);
+		item12 = new Item(260,-315, "item",0, 1);
+		
 		
 		
 		root = new Group();
@@ -186,7 +232,7 @@ public class Juego extends Application{
 		for(int i=0;i<tilemap.length;i++) {
 			for(int j=0;j<tilemap[i].length;j++) {
 				if (tilemap[i][j]!=0) {
-					this.tiles.add(new Tile(tilemap[i][j],j*70,(i*70)-1120,"tilemap",0,70,70));
+					this.tiles.add(new Tile(tilemap[i][j],j*70,(i*70)-1400,"tilemap",0,70,70));
 				
 			}
 			
@@ -213,6 +259,7 @@ public class Juego extends Application{
 		imagenes.put("tilemap2",new Image("tilemap2.png"));
 		imagenes.put("personaje", new Image("sailormoon.png"));
 		imagenes.put("item", new Image("item.png"));
+		
 	}
 	
 	public void pintar() {
@@ -221,6 +268,8 @@ public class Juego extends Application{
 		//tile.pintar(graficos);
 		for(int i=0;i<tiles.size();i++) 
 		tiles.get(i).pintar(graficos);
+
+		
 		for(int i=0;i<tile2.size();i++) 
 		tile2.get(i).pintar(graficos);
 		jugadorAnimado.pintar(graficos);
@@ -228,6 +277,15 @@ public class Juego extends Application{
 		item1.pintar(graficos);
 		item2.pintar(graficos);
 		item3.pintar(graficos);
+		item4.pintar(graficos);
+		item5.pintar(graficos);
+		item6.pintar(graficos);
+		item7.pintar(graficos);
+		item8.pintar(graficos);
+		//item9.pintar(graficos);
+		//item10.pintar(graficos);
+		//item11.pintar(graficos);
+		//item12.pintar(graficos);
 		graficos.fillText("Vidas: " + jugadorAnimado.getVidas(), 20, 20);
 		
 	}

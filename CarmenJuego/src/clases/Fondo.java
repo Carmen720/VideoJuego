@@ -23,23 +23,40 @@ public class Fondo extends ObjetoJuego{
 
 	@Override
 	public void mover() {
-		if (y >= 1*alto) {//y<=500
-			y=-alto;
-		}
-	    if (y2 >= 1*alto) {
+		//if (y >= 1*alto) {//y<=500
+		//	y=-alto;
+		//}
+	   // if (y2 >= 1*alto) {
 			y2=-alto;
-		}
-		if (Juego.abajo) {
-			if(JugadorAnimado.yestatica>700) {
-			y-=700;
-			y2-=700;
-		}}
+		//}
+		//if (Juego.abajo) {
+		//	if(JugadorAnimado.yestatica>700) {
+		//	y-=700;
+		//	y2-=700;
+		//}}
 		
-		if (Juego.arriba) {
-			if(JugadorAnimado.yestatica<0) {
-			y+=700;
-			y2+=700;
-		}}
+		//if (Juego.arriba) {
+		//	if(JugadorAnimado.yestatica<0) {
+		//	y+=700;
+		//	y2+=700;
+		//}}
+		if(Juego.arriba) {
+			if(y<=(-1*alto)) {
+				y=alto;
+			}
+			if(y2<=(-1*alto)) {
+				y2= alto;
+			}
+			
+		if(Juego.abajo) {
+			if(y>=(alto)) {
+				y= (-1*alto);
+			}
+			if(y2>=(alto)) {
+              y2= (-1*alto);		
+			}
+			
 	}
-	
+		}
+  }
 }
