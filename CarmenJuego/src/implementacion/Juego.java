@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import clases.EnemigoAnimado1;
+import clases.EnemigoAnimado2;
 import clases.Fondo;
 import clases.Item;
 import clases.JugadorAnimado;
@@ -45,6 +46,12 @@ public class Juego extends Application{
 	private Item item10;
 	private Item item11;
 	private Item item12;
+	private Item item13;
+	private Item item14;
+	private Item item15;
+	private Item item16;
+	private Item item17;
+	private Item item18;
 	private Tile tile;
 	int randomx,randomy,randomyy;
 	int randomxV,randomyV,randomyyV;
@@ -53,18 +60,19 @@ public class Juego extends Application{
 	private ArrayList<Tile> tiles;
 	private ArrayList<Tile> tile2;
 	private ArrayList<EnemigoAnimado1> enemigos1;
-
+	private ArrayList<EnemigoAnimado2> enemigos2;
+	
 	private int tilemap[][] = {
 			{9,9,9,9,9,9,9,9,9,9,9},
 			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,0,0,0,21,0,0,0,9,9},
+			{9,9,0,19,17,17,17,18,0,9,9},
 			{9,9,0,0,0,0,0,0,0,9,9},
-			{9,9,0,0,4,4,4,0,0,9,9},
+			{9,9,0,0,0,0,0,20,0,9,9},
+			{9,9,0,0,20,0,0,0,0,9,9},
 			{9,9,0,0,0,0,0,0,0,9,9},
-			{9,9,0,0,0,0,0,0,0,9,9},
-			{9,9,0,0,0,0,4,4,4,9,9},
-			{9,9,0,0,0,0,0,0,0,9,9},
-			{9,9,4,4,0,0,0,0,0,9,9},
-			{9,9,0,0,0,0,0,0,0,9,9},
+			{9,9,17,17,18,0,22,0,0,9,9},
+			{9,9,0,0,0,0,20,0,0,9,9},
 			{10,10,0,0,0,0,0,0,0,10,10},
 			{10,10,0,0,0,0,0,14,0,10,10},
 			{10,10,0,15,0,0,0,0,0,10,10},
@@ -136,7 +144,143 @@ public class Juego extends Application{
 		ventana.setTitle("Excalibur");
 		ventana.show();
 		cicloJuego();
+
 	}
+	
+	public void inicializarComponentes() {
+		imagenes = new HashMap<String,Image>();
+		
+		
+		
+		enemigos1=new ArrayList<EnemigoAnimado1>();
+		for (int z=0;z<30;z++) {
+			randomyyV=(int)(Math.random()*3+1);
+			randomxV=(int)(Math.random()*26000+3000);
+			if (randomyyV==1)
+				randomyV=14;
+			if (randomyyV==2)
+				randomyV=140;
+			if (randomyyV==3)
+				randomyV=288;
+			enemigos1.add(new EnemigoAnimado1(randomxV,randomyV,0,0,"enemigo1",6,"mover", false));
+		}
+		enemigos2=new ArrayList<EnemigoAnimado2>();
+		for (int z=0;z<30;z++) {
+			randomyyV=(int)(Math.random()*3+1);
+			randomxV=(int)(Math.random()*26000+3000);
+			if (randomyyV==1)
+				randomyV=74;
+			if (randomyyV==2)
+				randomyV=284;
+			if (randomyyV==3)
+				randomyV=494;
+			enemigos2.add(new EnemigoAnimado2(randomxV,randomyV,0,0,"enemigo2",4,"mover",false));
+		}
+		
+		
+		
+		
+		cargarImagenes();
+		jugadorAnimado = new JugadorAnimado(240, 300, "personaje", 3, 0,"descanso");
+		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",3);
+		inicializarTiles();
+		item = new Item(270,20, "item",0, 1);
+		item1 = new Item(360,20, "item",0, 1);
+		item2 = new Item(460,20, "item",0, 1);
+		item3 = new Item(520,160, "item",0, 1);	
+		item4 = new Item(308,-100, "item",0, 1);
+		item5 = new Item(515,-170 , "item",0, 1);
+		item6 = new Item(515,-388, "item",0, 1);
+		item7 = new Item(380,-525, "item",0, 1);
+		item8 = new Item(220,-320, "item",0, 1);
+		item9 = new Item(520,-662, "item",0, 1);	
+		item10 = new Item(290,-320, "item",0, 1);
+		item11 = new Item(360,-320, "item",0, 1);
+		item12 = new Item(170,-880, "item",0, 1);
+		item13 = new Item(220,-880, "item",0, 1);
+		item14 = new Item(273,-880, "item",0, 1);
+		item15 = new Item(310,-1020, "item",0, 1);
+		item16 = new Item(518,-1090, "item",0, 1);
+		item17 = new Item(285,-1230, "item",0, 1);
+		item18 = new Item(460,-1230, "item",0, 1);
+		
+		
+		
+		
+	
+		
+		
+		root = new Group();
+		escena = new Scene(root, 770,700);
+		lienzo = new Canvas(770,700);
+		root.getChildren().add(lienzo);
+		graficos = lienzo.getGraphicsContext2D();
+	}	
+	
+	
+	
+	public void cargarImagenes() {
+		imagenes.put("fondo-bosque",new Image("fondo-bosque.jpg"));
+		imagenes.put("fondo-bosque2",new Image("fondo-bosque2.jpg"));
+		imagenes.put("tilemap",new Image("tilemap.png"));
+		imagenes.put("tilemap2",new Image("tilemap2.png"));
+		imagenes.put("personaje", new Image("sailormoon.png"));
+		imagenes.put("item", new Image("item.png"));
+		imagenes.put("enemigo1", new Image("enemigo1.png"));
+		imagenes.put("enemigo2", new Image("enemigo2.png"));
+		
+	}
+	
+	
+	public void pintar() {
+		//graficos.fillRect(0,0,100,100);
+		fondo.pintar(graficos);
+		//tile.pintar(graficos);
+		for(int i=0;i<tiles.size();i++) 
+		tiles.get(i).pintar(graficos);
+
+		
+		for(int i=0;i<tile2.size();i++) 
+		tile2.get(i).pintar(graficos);
+		jugadorAnimado.pintar(graficos);
+	
+		item.pintar(graficos);
+		item1.pintar(graficos);
+		item2.pintar(graficos);
+		item3.pintar(graficos);
+		item4.pintar(graficos);
+		item5.pintar(graficos);
+		item6.pintar(graficos);
+		item7.pintar(graficos);
+		item8.pintar(graficos);
+		item9.pintar(graficos);
+		item10.pintar(graficos);
+		item11.pintar(graficos);
+		item12.pintar(graficos);
+		item13.pintar(graficos);
+		item14.pintar(graficos);
+		item15.pintar(graficos);
+		item16.pintar(graficos);
+		item17.pintar(graficos);
+		item18.pintar(graficos);
+		
+		
+		
+		graficos.fillText("Vidas: " + jugadorAnimado.getVidas(), 20, 20);
+	
+		
+		for (int z=0;z<enemigos1.size();z++)
+			enemigos1.get(z).pintar(graficos);
+		
+		for (int i=0;i<enemigos2.size();i++)
+			enemigos2.get(i).pintar(graficos);
+		
+		
+		
+	}
+
+	
+	
 	
 	public void cicloJuego() {
 		long tiempoInicial = System.nanoTime();
@@ -157,7 +301,6 @@ public class Juego extends Application{
 	}
 	
 	public void actualizarEstado(double t) {
-		//jugador.mover();
 		jugadorAnimado.verificarColisionesItem(item);
 		jugadorAnimado.verificarColisionesItem(item1);
 		jugadorAnimado.verificarColisionesItem(item2);
@@ -171,9 +314,35 @@ public class Juego extends Application{
 		jugadorAnimado.verificarColisionesItem(item10);
 		jugadorAnimado.verificarColisionesItem(item11);
 		jugadorAnimado.verificarColisionesItem(item12);
+		jugadorAnimado.verificarColisionesItem(item13);
+		jugadorAnimado.verificarColisionesItem(item14);
+		jugadorAnimado.verificarColisionesItem(item15);
+		jugadorAnimado.verificarColisionesItem(item16);
+		jugadorAnimado.verificarColisionesItem(item17);
+		jugadorAnimado.verificarColisionesItem(item18);
+		
+		
 		jugadorAnimado.calcularFrame(t);
 		jugadorAnimado.mover();
 		fondo.mover();
+	//	jugadorAnimado.actualizarVidas();
+		
+		
+		for(int z=0;z<enemigos1.size();z++) {
+			enemigos1.get(z).mover();
+        	enemigos1.get(z).actualizarAnimacion(t);
+		}
+		
+		for (int i=0;i<enemigos1.size();i++)
+			jugadorAnimado.verificarColisiones3(enemigos1.get(i));	
+		
+		for(int z=0;z<enemigos2.size();z++) {
+			enemigos2.get(z).mover();
+			enemigos2.get(z).actualizarAnimacion(t);
+		}
+		for (int i=0;i<enemigos2.size();i++)
+			jugadorAnimado.verificarColisiones4(enemigos2.get(i));
+		
 		for(int i= 0; i<tiles.size() ; i++) {
 		 tiles.get(i).mover();    
 		}
@@ -182,6 +351,10 @@ public class Juego extends Application{
 		for(int i= 0; i<tile2.size() ; i++) {
 	     tile2.get(i).mover();    
 		 }
+		
+		
+		
+		
 		item.mover();
 		item1.mover();
 		item2.mover();
@@ -195,37 +368,19 @@ public class Juego extends Application{
 		item10.mover();
 		item11.mover();
 		item12.mover();
+		item13.mover();
+		item14.mover();
+		item15.mover();
+		item16.mover();
+		item17.mover();
+		item18.mover();
+		
+		
+		
 		
 	}
 	
-	public void inicializarComponentes() {
-		imagenes = new HashMap<String,Image>();
-		cargarImagenes();
-		jugadorAnimado = new JugadorAnimado(240, 317, "personaje", 3, 0,"descanso");
-		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",3);
-		inicializarTiles();
-		item = new Item(270,20, "item",0, 1);
-		item1 = new Item(360,20, "item",0, 1);
-		item2 = new Item(460,20, "item",0, 1);
-		item3 = new Item(520,150, "item",0, 1);
-		item4 = new Item(200,-315, "item",0, 1);
-		item5 = new Item(260,-315, "item",0, 1);
-		item6 = new Item(320,-315, "item",0, 1);
-		item7 = new Item(200,-315, "item",0, 1);
-		item8 = new Item(310,-100, "item",0, 1);
-		item9 = new Item(460,20, "item",0, 1);
-		item10 = new Item(520,150, "item",0, 1);
-		item11 = new Item(200,-315, "item",0, 1);
-		item12 = new Item(260,-315, "item",0, 1);
-		
-		
-		
-		root = new Group();
-		escena = new Scene(root, 770,700);
-		lienzo = new Canvas(770,700);
-		root.getChildren().add(lienzo);
-		graficos = lienzo.getGraphicsContext2D();
-	}
+
 	
 	public void inicializarTiles() {
 		tiles = new ArrayList<Tile>();
@@ -252,44 +407,9 @@ public class Juego extends Application{
  	
      }
 }
-	public void cargarImagenes() {
-		imagenes.put("fondo-bosque",new Image("fondo-bosque.jpg"));
-		imagenes.put("fondo-bosque2",new Image("fondo-bosque2.jpg"));
-		imagenes.put("tilemap",new Image("tilemap.png"));
-		imagenes.put("tilemap2",new Image("tilemap2.png"));
-		imagenes.put("personaje", new Image("sailormoon.png"));
-		imagenes.put("item", new Image("item.png"));
-		
-	}
 	
-	public void pintar() {
-		//graficos.fillRect(0,0,100,100);
-		fondo.pintar(graficos);
-		//tile.pintar(graficos);
-		for(int i=0;i<tiles.size();i++) 
-		tiles.get(i).pintar(graficos);
-
-		
-		for(int i=0;i<tile2.size();i++) 
-		tile2.get(i).pintar(graficos);
-		jugadorAnimado.pintar(graficos);
-		item.pintar(graficos);
-		item1.pintar(graficos);
-		item2.pintar(graficos);
-		item3.pintar(graficos);
-		item4.pintar(graficos);
-		item5.pintar(graficos);
-		item6.pintar(graficos);
-		item7.pintar(graficos);
-		item8.pintar(graficos);
-		//item9.pintar(graficos);
-		//item10.pintar(graficos);
-		//item11.pintar(graficos);
-		//item12.pintar(graficos);
-		graficos.fillText("Vidas: " + jugadorAnimado.getVidas(), 20, 20);
-		
-	}
 	
+		
 	public void gestionEventos() {
 		//escena.setOnKeyPressed(new Evento());
 		escena.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -321,6 +441,8 @@ public class Juego extends Application{
 					case "SPACE":
 						//jugador.setVelocidad(15);
 						jugadorAnimado.setVelocidad(15);
+						EnemigoAnimado1.setVelocidad(15);
+	
 						break;
 				}
 			}
@@ -348,6 +470,7 @@ public class Juego extends Application{
 						break;
 					case "SPACE":
 						jugadorAnimado.setVelocidad(5);
+						EnemigoAnimado1.setVelocidad(18);
 						break;
 				}
 			}
@@ -355,6 +478,14 @@ public class Juego extends Application{
 		});
 	}
 	
+	
+	//public void actualizarVidas() {
+		//int vidas = 0;
+		//if(vidas==0) {
+			//System.out.println("haz perdido");
+		//}
+		
+	//}
 	
 
 }

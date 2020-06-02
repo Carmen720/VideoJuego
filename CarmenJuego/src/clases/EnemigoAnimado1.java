@@ -1,14 +1,11 @@
 package clases;
 
 import java.util.HashMap;
-
 import implementacion.Juego;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.Rectangle;
 
 public class EnemigoAnimado1 {
-	private int x;
-	private int y;
 	private int ancho;
 	private int alto;
 	private String indiceImagen;
@@ -16,14 +13,15 @@ public class EnemigoAnimado1 {
 	private static int velocidad;
 	public static String animacionActual;
 	private HashMap<String, Animacion> animaciones;
+	private int x;
+	private int y;
+	private double anchoImagen;
+	private double altoImagen;
+	private double xImagen;
+	private double yImagen;
 	
-	//Coordenadas para el fragmento de la imagen a pintar
-		private int xImagen;
-		private int yImagen;
-		private int anchoImagen;
-		private int altoImagen;	
-		
-	public EnemigoAnimado1(int x, int y, int ancho, int alto, String indiceImagen, int velocidad, String animacionActual) {
+	
+	public EnemigoAnimado1(int x, int y, int ancho, int alto, String indiceImagen, int velocidad, String animacionActual, boolean capturado) {
 		super();
 		this.x = x;
 		this.y = y;
@@ -31,64 +29,76 @@ public class EnemigoAnimado1 {
 		this.alto = alto;
 		this.indiceImagen = indiceImagen;
 		this.capturado = capturado;
-		this.velocidad = velocidad;
-		this.animacionActual=animacionActual;
+		EnemigoAnimado1.velocidad = velocidad;
+		EnemigoAnimado1.animacionActual=animacionActual;
 		inicializarAnimaciones();
-		
 	}
-
-	public void actualizarAnimacion(double t) {
-		Rectangle coordenadasActuales = this.animaciones.get(animacionActual).calcularFrameActual(t);
+	
+	public void inicializarAnimaciones() {
+		animaciones = new HashMap<String, Animacion>();
+		Rectangle coordenadasMover[]= {
+	
+				new Rectangle(298, 6, 59, 65),
+				new Rectangle(238, 6, 60, 66),
+				new Rectangle(179, 6, 59, 66),
+				new Rectangle(120, 6, 59, 66),
+				new Rectangle(62, 6, 58, 66),
+				new Rectangle(5, 6, 57, 66),
+				
+				new Rectangle(303, 77, 56, 65),
+				new Rectangle(240, 78, 57, 66),
+				new Rectangle(180, 79, 57, 67),
+				new Rectangle(118, 78, 58, 66),
+				new Rectangle(59, 78, 59, 66),
+				new Rectangle(0, 78, 59, 66),
+				
+				new Rectangle(297, 146, 61, 66),
+				new Rectangle(236, 146, 61, 66),
+				new Rectangle(176, 146, 61, 66),
+				new Rectangle(119, 146, 58, 66),
+				new Rectangle(61, 146, 57, 66),
+				new Rectangle(1, 146, 60, 66)
+		};
+		
+		
+		Animacion animacionMover = new Animacion("mover",0.1,coordenadasMover);
+		animaciones.put("mover",animacionMover);
+     }
+	
+	
+	public void mover(){
+		if (Juego.derecha)
+			this.x-=velocidad;
+	}
+	
+	
+	public void actualizarAnimacion(double time) {
+		Rectangle coordenadasActuales = this.animaciones.get(animacionActual).calcularFrameActual(time);
 		this.xImagen = (int)coordenadasActuales.getX();
 		this.yImagen = (int)coordenadasActuales.getY();
 		this.anchoImagen = (int)coordenadasActuales.getWidth();
 		this.altoImagen = (int)coordenadasActuales.getHeight();
-		//System.out.println("Xim: "+this.xImagen+"/"+"Yim: "+this.yImagen+"/"+"Ancho: "+this.anchoImagen+"/"+"Alto: "+this.altoImagen+"/");
+	
 	}
 	
-	public void inicializarAnimaciones() {
-			animaciones = new HashMap<String, Animacion>();
-			Rectangle coordenadasMover[]= {
-					new Rectangle(298, 6, 59, 65),
-					new Rectangle(238, 6, 60, 66),
-					new Rectangle(179, 6, 59, 66),
-					new Rectangle(120, 6, 59, 66),
-					new Rectangle(62, 6, 58, 66),
-					new Rectangle(5, 6, 57, 66),
-					
-					new Rectangle(303, 77, 56, 65),
-					new Rectangle(240, 78, 57, 66),
-					new Rectangle(180, 79, 57, 67),
-					new Rectangle(118, 78, 58, 66),
-					new Rectangle(59, 78, 59, 66),
-					new Rectangle(0, 78, 59, 66),
-					
-					new Rectangle(297, 146, 61, 66),
-					new Rectangle(236, 146, 61, 66),
-					new Rectangle(176, 146, 61, 66),
-					new Rectangle(119, 146, 58, 66),
-					new Rectangle(61, 146, 57, 66),
-					new Rectangle(1, 146, 60, 66)
-			};
-			
-			Animacion animacionMover = new Animacion("mover",coordenadasMover,0.1);
-			animaciones.put("mover",animacionMover);
+	
+	public void pintar(GraphicsContext graficos) {
+		graficos.drawImage(
+				Juego.imagenes.get(this.indiceImagen), 
+				this.xImagen, this.yImagen, 
+				this.anchoImagen, this.altoImagen,
+				this.x-=2, this.y,
+				this.anchoImagen, this.altoImagen
+		);
+    }
+	
+	
+	public Rectangle obtenerRectangulo() {
+		return new Rectangle(this.x, this.y, this.anchoImagen, this.altoImagen);
 	}
 	
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
+	public boolean isCapturado() {
+		return capturado;
 	}
 
 	public int getAncho() {
@@ -115,45 +125,33 @@ public class EnemigoAnimado1 {
 		this.indiceImagen = indiceImagen;
 	}
 
-	public int getVelocidad() {
+	public static int getVelocidad() {
 		return velocidad;
 	}
 
-	public static void setVelocidad(int _velocidad) {
-		velocidad = _velocidad;
+	public static void setVelocidad(int velocidad) {
+		EnemigoAnimado1.velocidad = velocidad;
 	}
 
-	public void mover(){
-		if (Juego.derecha)
-			this.x-=velocidad;
-	}
-	
-	public void pintar(GraphicsContext graficos) {
-			graficos.drawImage(
-					Juego.imagenes.get(this.indiceImagen), 
-					this.xImagen, this.yImagen, 
-					this.anchoImagen, this.altoImagen,
-					this.x-=2, this.y,
-					this.anchoImagen, this.altoImagen
-			);
-		//graficos.fillRect(this.x, this.y, 18, 18);
-	}
-	
-	public Rectangle obtenerRectangulo() {
-		return new Rectangle(this.x, this.y, this.anchoImagen, this.altoImagen);
+	public static String getAnimacionActual() {
+		return animacionActual;
 	}
 
-	public boolean isCapturado() {
-		return capturado;
+	public static void setAnimacionActual(String animacionActual) {
+		EnemigoAnimado1.animacionActual = animacionActual;
+	}
+
+	public HashMap<String, Animacion> getAnimaciones() {
+		return animaciones;
+	}
+
+	public void setAnimaciones(HashMap<String, Animacion> animaciones) {
+		this.animaciones = animaciones;
 	}
 
 	public void setCapturado(boolean capturado) {
 		this.capturado = capturado;
 	}
-
-
-
 	
-
 	
 }

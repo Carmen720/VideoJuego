@@ -73,7 +73,7 @@ public class JugadorAnimado extends ObjetoJuego{
 		};
 		
 
-		Animacion animacionCorrer = new Animacion(0.05,coordenadasCorrer);
+		Animacion animacionCorrer = new Animacion(animacionActual, 0.05,coordenadasCorrer);
 		animaciones.put("correr", animacionCorrer);
 		
 		Rectangle coordenadasDescanso[] = {
@@ -88,7 +88,7 @@ public class JugadorAnimado extends ObjetoJuego{
 				//new Rectangle(111, 309, 31, 68),
 				//new Rectangle(54, 309, 37, 68)
 		};
-		Animacion animacionDescanso = new Animacion(0.1, coordenadasDescanso);
+		Animacion animacionDescanso = new Animacion(animacionActual, 0.1, coordenadasDescanso);
 		animaciones.put("descanso",animacionDescanso);
 		
 		Rectangle coordenadasAbajo[] = {
@@ -103,7 +103,7 @@ public class JugadorAnimado extends ObjetoJuego{
 				//new Rectangle(111, 309, 31, 68),
 				//new Rectangle(54, 309, 37, 68)
 		};
-		Animacion animacionAbajo = new Animacion(0.1, coordenadasAbajo);
+		Animacion animacionAbajo = new Animacion(animacionActual, 0.1, coordenadasAbajo);
 		animaciones.put("abajo",animacionAbajo);
 		
 		Rectangle coordenadasArriba[] = {
@@ -118,7 +118,7 @@ public class JugadorAnimado extends ObjetoJuego{
 				//new Rectangle(111, 309, 31, 68),
 				//new Rectangle(54, 309, 37, 68)
 		};
-		Animacion animacionArriba = new Animacion(0.1, coordenadasArriba);
+		Animacion animacionArriba = new Animacion(animacionActual, 0.1, coordenadasArriba);
 		animaciones.put("arriba",animacionArriba);
 	}
 	
@@ -189,8 +189,30 @@ public class JugadorAnimado extends ObjetoJuego{
 		}
 			//System.out.println("Estan colisionando");
 	}
-
 	
+
+	public void verificarColisiones3(EnemigoAnimado1 item) {
+		if (this.obtenerRectangulo().intersects(item.obtenerRectangulo().getBoundsInLocal())) {
+			if (!item.isCapturado())
+				this.vidas--;
+			item.setCapturado(true);				
+		}
+	}
+	public void verificarColisiones4(EnemigoAnimado2 item) {
+		if (this.obtenerRectangulo().intersects(item.obtenerRectangulo().getBoundsInLocal())) {
+			if (!item.isCapturado())
+				this.vidas--;
+			item.setCapturado(true);				
+		}
+	}
+	
+	public void actualizarVidas() {
+		if(vidas==0) {
+			System.out.println("haz perdido");
+			
+		}
+		
+	}
 		
 	
 }

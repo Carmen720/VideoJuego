@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 public class Animacion {
 	private double duracion;
 	private Rectangle coordenadas[];
-	public Animacion(double duracion, Rectangle coordenadas[]) {
+	public Animacion(String string, double duracion, Rectangle coordenadas[]) {
 		super();
 		this.duracion = duracion;
 		this.coordenadas = coordenadas;
@@ -33,7 +33,7 @@ public class Animacion {
 	
 	public Rectangle calcularFrameActual(double t) {
 		int cantidadFrames = this.coordenadas.length;
-		int indiceFrameActual = (int)(t%(cantidadFrames*duracion)/duracion);
+		int indiceFrameActual = (int)((t % (cantidadFrames * duracion)) / duracion);
 		return coordenadas[indiceFrameActual];
 	}
 	
