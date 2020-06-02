@@ -61,6 +61,7 @@ public class Juego extends Application{
 	private ArrayList<Tile> tile2;
 	private ArrayList<EnemigoAnimado1> enemigos1;
 	private ArrayList<EnemigoAnimado2> enemigos2;
+	private ArrayList<EnemigoAnimado2> enemigos3;
 	
 	private int tilemap[][] = {
 			{9,9,9,9,9,9,9,9,9,9,9},
