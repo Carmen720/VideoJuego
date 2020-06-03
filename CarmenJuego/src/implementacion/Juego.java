@@ -1,5 +1,8 @@
 package implementacion;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 //hola
@@ -29,6 +32,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class Juego extends Application{
+	protected static final boolean finJuego = false;
 	private GraphicsContext graficos;
 	private Group root;
 	private Scene escena;
@@ -267,21 +271,7 @@ public class Juego extends Application{
 	}
 	
 	
-	public static void Vidas() {
-		vida = 4;
-		jugadores.add(new Player(JOptionPane.showInputDialog("Nombre del jugador"),vida));
-		
-		try {
-			BufferedWriter archivo = new BufferedWriter(new FileWriter("NombredeJugadores.cvs",true));
-            archivo.write(Player.toCSV());	
-            archivo.flush();
-            archivo.close();
-		
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-	}
+	
 	
 	
 	public void pintar() {
@@ -348,9 +338,13 @@ public class Juego extends Application{
 			@Override
 			public void handle(long tiempoActual) {
 				double t = (tiempoActual - tiempoInicial) / 1000000000.0;
-				//System.out.println(t);
-				actualizarEstado(t);
-				pintar();
+				if(!Juego.finJuego) {
+					pintar();
+					actualizarEstado(t);
+				}else {
+					guardarVidas();
+				}
+				
 			}
 			
 		};
@@ -449,6 +443,47 @@ public class Juego extends Application{
 		
 		
 		
+	}
+	
+	
+	
+	private static void leerVidas() {
+		String linea="";
+		String cadena="";
+		
+		try {
+			BufferedReader flujo = new BufferedReader(new FileReader("vidasplayer.csv"));
+			while ((linea=flujo.readLine())!=null) {
+				String partes[]=linea.split(",");
+				jugadores.add(new Player(partes[0],Integer.parseInt(partes[1])));
+				cadena+=partes[0]+":"+partes[1]+"\n";
+			}
+			flujo.close();
+		}
+		catch (FileNotFoundException e) {
+			System.out.println("0 Vidas");
+		}catch (IOException e) {
+			System.out.println(".");
+		}
+		JOptionPane.showMessageDialog(null, "vidas: "+"\n"+cadena);
+	}
+	
+	public static void guardarVidas() {
+		vida = 4;
+		jugadores.add(new Player(JOptionPane.showInputDialog("Nombre del jugador:"),vida));
+		
+		try {
+			BufferedWriter archivo = new BufferedWriter(new FileWriter("NombredeJugadores.cvs",true));
+            archivo.write(Player.toCSV());	
+            archivo.flush();
+            archivo.close();
+		
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		System.exit(0);
+		leerVidas();
 	}
 	
 

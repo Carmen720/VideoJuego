@@ -202,10 +202,9 @@ public class JugadorAnimado extends ObjetoJuego{
 				this.vidas--;
 			item.setCapturado(true);	
 			
-			
 			if(vidas<=0) {
 				JOptionPane.showMessageDialog(null, "Perdiste");
-				Juego.Vidas();
+			Juego.guardarVidas();
 				//item.setCapturado(true);	
 			
 			}
@@ -223,7 +222,7 @@ public class JugadorAnimado extends ObjetoJuego{
 			
 			if(vidas<=0) {
 				JOptionPane.showMessageDialog(null, "Perdiste");
-				Juego.Vidas();
+				Juego.guardarVidas();
 					
 		}
 	}
