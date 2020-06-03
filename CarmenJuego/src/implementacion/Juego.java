@@ -217,7 +217,7 @@ public class Juego extends Application{
 		
 		
 		cargarImagenes();
-		jugadorAnimado = new JugadorAnimado(240, 300, "personaje", 3, 0,"descanso");
+		jugadorAnimado = new JugadorAnimado(240, 300, "personaje", 3, 3,"descanso");
 		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",3);
 		inicializarTiles();
 		item = new Item(270,20, "item",0, 1);
@@ -277,6 +277,10 @@ public class Juego extends Application{
 	public void pintar() {
 		//graficos.fillRect(0,0,100,100);
 		fondo.pintar(graficos);
+		if(jugadorAnimado.muere()) {
+			JOptionPane.showMessageDialog(null, "sus puntos son: "+jugadorAnimado.getVidas());
+			System.exit(0);
+			}
 		
 		//tile.pintar(graficos);
 		for(int i=0;i<tiles.size();i++) 
@@ -338,13 +342,8 @@ public class Juego extends Application{
 			@Override
 			public void handle(long tiempoActual) {
 				double t = (tiempoActual - tiempoInicial) / 1000000000.0;
-				if(!Juego.finJuego) {
-					pintar();
-					actualizarEstado(t);
-				}else {
-					guardarVidas();
-				}
-				
+				actualizarEstado(t);
+				pintar();
 			}
 			
 		};
@@ -447,46 +446,7 @@ public class Juego extends Application{
 	
 	
 	
-	private static void leerVidas() {
-		String linea="";
-		String cadena="";
-		
-		try {
-			BufferedReader flujo = new BufferedReader(new FileReader("vidasplayer.csv"));
-			while ((linea=flujo.readLine())!=null) {
-				String partes[]=linea.split(",");
-				jugadores.add(new Player(partes[0],Integer.parseInt(partes[1])));
-				cadena+=partes[0]+":"+partes[1]+"\n";
-			}
-			flujo.close();
-		}
-		catch (FileNotFoundException e) {
-			System.out.println("0 Vidas");
-		}catch (IOException e) {
-			System.out.println(".");
-		}
-		JOptionPane.showMessageDialog(null, "vidas: "+"\n"+cadena);
-	}
 	
-	public static void guardarVidas() {
-		vida = 4;
-		jugadores.add(new Player(JOptionPane.showInputDialog("Nombre del jugador:"),vida));
-		
-		try {
-			BufferedWriter archivo = new BufferedWriter(new FileWriter("NombredeJugadores.cvs",true));
-            archivo.write(Player.toCSV());	
-            archivo.flush();
-            archivo.close();
-		
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-		System.exit(0);
-		leerVidas();
-	}
-	
-
 	
 	//private void disparar(int x,int y) {
 		//Disparo disparos = new Disparo();
