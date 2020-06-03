@@ -3,8 +3,10 @@ package implementacion;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import clases.Disparo;
 import clases.EnemigoAnimado1;
 import clases.EnemigoAnimado2;
+import clases.EnemigoAnimado3;
 import clases.Fondo;
 import clases.Item;
 import clases.JugadorAnimado;
@@ -52,7 +54,11 @@ public class Juego extends Application{
 	private Item item16;
 	private Item item17;
 	private Item item18;
+	private Disparo disp;
 	private Tile tile;
+	 public static ArrayList<Disparo> cuetazos;
+	
+	private Boolean booleano;
 	int randomx,randomy,randomyy;
 	int randomxV,randomyV,randomyyV;
 		
@@ -61,7 +67,7 @@ public class Juego extends Application{
 	private ArrayList<Tile> tile2;
 	private ArrayList<EnemigoAnimado1> enemigos1;
 	private ArrayList<EnemigoAnimado2> enemigos2;
-	private ArrayList<EnemigoAnimado2> enemigos3;
+	private ArrayList<EnemigoAnimado3> enemigos3;
 	
 	private int tilemap[][] = {
 			{9,9,9,9,9,9,9,9,9,9,9},
@@ -178,6 +184,20 @@ public class Juego extends Application{
 			enemigos2.add(new EnemigoAnimado2(randomxV,randomyV,0,0,"enemigo2",4,"mover",false));
 		}
 		
+		enemigos3=new ArrayList<EnemigoAnimado3>();
+		for (int z=0;z<30;z++) {
+			randomyyV=(int)(Math.random()*3+1);
+			randomxV=(int)(Math.random()*26000+3000);
+			if (randomyyV==1)
+				randomyV=75;
+			if (randomyyV==2)
+				randomyV=285;
+			if (randomyyV==3)
+				randomyV=495;
+			enemigos3.add(new EnemigoAnimado3(randomxV,randomyV,0,0,"enemigo3",4,"mover",false));
+		}
+		
+		
 		
 		
 		
@@ -229,6 +249,8 @@ public class Juego extends Application{
 		imagenes.put("item", new Image("item.png"));
 		imagenes.put("enemigo1", new Image("enemigo1.png"));
 		imagenes.put("enemigo2", new Image("enemigo2.png"));
+		//imagenes.put("enemigo3", new Image("enemigo3.png"));
+		imagenes.put("shot",new Image("shot.png"));
 		
 	}
 	
@@ -236,6 +258,7 @@ public class Juego extends Application{
 	public void pintar() {
 		//graficos.fillRect(0,0,100,100);
 		fondo.pintar(graficos);
+		
 		//tile.pintar(graficos);
 		for(int i=0;i<tiles.size();i++) 
 		tiles.get(i).pintar(graficos);
@@ -267,8 +290,11 @@ public class Juego extends Application{
 		
 		
 		
+		
+		
 		graficos.fillText("Vidas: " + jugadorAnimado.getVidas(), 20, 20);
-	
+		
+		
 		
 		for (int z=0;z<enemigos1.size();z++)
 			enemigos1.get(z).pintar(graficos);
@@ -276,6 +302,8 @@ public class Juego extends Application{
 		for (int i=0;i<enemigos2.size();i++)
 			enemigos2.get(i).pintar(graficos);
 		
+		//for (int i=0;i<enemigos3.size();i++)
+		//	enemigos3.get(i).pintar(graficos);
 		
 		
 	}
@@ -322,11 +350,16 @@ public class Juego extends Application{
 		jugadorAnimado.verificarColisionesItem(item17);
 		jugadorAnimado.verificarColisionesItem(item18);
 		
+		//if(booleano==true) {
+			
+			//disparar(240,300);
+		//}
+		
 		
 		jugadorAnimado.calcularFrame(t);
 		jugadorAnimado.mover();
 		fondo.mover();
-	//	jugadorAnimado.actualizarVidas();
+		//jugadorAnimado.actualizarVidas();
 		
 		
 		for(int z=0;z<enemigos1.size();z++) {
@@ -343,6 +376,13 @@ public class Juego extends Application{
 		}
 		for (int i=0;i<enemigos2.size();i++)
 			jugadorAnimado.verificarColisiones4(enemigos2.get(i));
+		
+		for(int z=0;z<enemigos3.size();z++) {
+			enemigos3.get(z).mover();
+			enemigos3.get(z).actualizarAnimacion(t);
+		}
+		for (int i=0;i<enemigos3.size();i++)
+			jugadorAnimado.verificarColisiones5(enemigos3.get(i));
 		
 		for(int i= 0; i<tiles.size() ; i++) {
 		 tiles.get(i).mover();    
@@ -383,6 +423,11 @@ public class Juego extends Application{
 	
 
 	
+	//private void disparar(int x,int y) {
+		//Disparo disparos = new Disparo();
+		
+	//}
+
 	public void inicializarTiles() {
 		tiles = new ArrayList<Tile>();
 		for(int i=0;i<tilemap.length;i++) {
@@ -442,7 +487,9 @@ public class Juego extends Application{
 					case "SPACE":
 						//jugador.setVelocidad(15);
 						jugadorAnimado.setVelocidad(15);
-						EnemigoAnimado1.setVelocidad(15);
+					//	EnemigoAnimado1.setVelocidad(15);
+					//	EnemigoAnimado2.setVelocidad(15);
+						booleano = true;					
 	
 						break;
 				}
@@ -471,7 +518,9 @@ public class Juego extends Application{
 						break;
 					case "SPACE":
 						jugadorAnimado.setVelocidad(5);
-						EnemigoAnimado1.setVelocidad(18);
+						EnemigoAnimado1.setVelocidad(10);
+						EnemigoAnimado2.setVelocidad(10);
+						
 						break;
 				}
 			}

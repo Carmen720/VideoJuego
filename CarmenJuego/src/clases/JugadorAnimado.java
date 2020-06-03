@@ -3,13 +3,18 @@ package clases;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.JOptionPane;
+
 import implementacion.Juego;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class JugadorAnimado extends ObjetoJuego{
 	private int vidas;
+	private int puntuacion = 0;
+	
 	private HashMap<String, Animacion> animaciones;
 	private int xImagen;
 	private int yImagen;
@@ -195,9 +200,12 @@ public class JugadorAnimado extends ObjetoJuego{
 		if (this.obtenerRectangulo().intersects(item.obtenerRectangulo().getBoundsInLocal())) {
 			if (!item.isCapturado())
 				this.vidas--;
-			item.setCapturado(true);				
+			item.setCapturado(true);	
+			
 		}
 	}
+	
+	
 	public void verificarColisiones4(EnemigoAnimado2 item) {
 		if (this.obtenerRectangulo().intersects(item.obtenerRectangulo().getBoundsInLocal())) {
 			if (!item.isCapturado())
@@ -206,13 +214,25 @@ public class JugadorAnimado extends ObjetoJuego{
 		}
 	}
 	
-	public void actualizarVidas() {
-		if(vidas==0) {
-			System.out.println("haz perdido");
+	public void verificarColisiones5(EnemigoAnimado3 item) {
+		if (this.obtenerRectangulo().intersects(item.obtenerRectangulo().getBoundsInLocal())) {
+			if (!item.isCapturado())
+				this.vidas--;
+			item.setCapturado(true);
+			
 			
 		}
-		
 	}
+	
+	//public void actualizarVidas() {
+		//if(vidas<0) {
+			//System.out.println("haz perdido");
+			
+	//	}
+		
+//	}
+	
+	 
 		
 	
 }

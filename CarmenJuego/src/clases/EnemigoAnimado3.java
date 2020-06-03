@@ -1,4 +1,5 @@
 package clases;
+//Hola
 
 import java.util.HashMap;
 import implementacion.Juego;
@@ -51,6 +52,7 @@ public class EnemigoAnimado3 {
 				new Rectangle(126, 92, 43, 64),
 				new Rectangle(73, 92, 42, 66),
 				new Rectangle(26, 93, 41, 66)
+				
 		};
 		
 		

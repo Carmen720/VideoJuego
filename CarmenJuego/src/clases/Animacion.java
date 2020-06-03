@@ -15,6 +15,7 @@ public class Animacion {
 	public Animacion(String string, Rectangle[] coordenadasMover, double d) {
 		
 	}
+	
 	public void setDuracion(double duracion) {
 		this.duracion = duracion;
 	}
