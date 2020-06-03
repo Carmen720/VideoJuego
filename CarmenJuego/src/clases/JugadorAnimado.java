@@ -196,24 +196,39 @@ public class JugadorAnimado extends ObjetoJuego{
 	}
 	
 
-	public void verificarColisiones3(EnemigoAnimado1 item) {
+	public boolean verificarColisiones3(EnemigoAnimado1 item) {
 		if (this.obtenerRectangulo().intersects(item.obtenerRectangulo().getBoundsInLocal())) {
 			if (!item.isCapturado())
 				this.vidas--;
 			item.setCapturado(true);	
 			
+			
+			if(vidas<=0) {
+				JOptionPane.showMessageDialog(null, "Perdiste");
+				Juego.Vidas();
+				//item.setCapturado(true);	
+			
+			}
+			
 		}
+		return false;
 	}
 	
 	
-	public void verificarColisiones4(EnemigoAnimado2 item) {
+	public boolean verificarColisiones4(EnemigoAnimado2 item) {
 		if (this.obtenerRectangulo().intersects(item.obtenerRectangulo().getBoundsInLocal())) {
 			if (!item.isCapturado())
 				this.vidas--;
-			item.setCapturado(true);				
+			item.setCapturado(true);
+			
+			if(vidas<=0) {
+				JOptionPane.showMessageDialog(null, "Perdiste");
+				Juego.Vidas();
+					
 		}
 	}
-	
+	return false;
+	}
 	public void verificarColisiones5(EnemigoAnimado3 item) {
 		if (this.obtenerRectangulo().intersects(item.obtenerRectangulo().getBoundsInLocal())) {
 			if (!item.isCapturado())

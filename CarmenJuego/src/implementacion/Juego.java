@@ -1,7 +1,12 @@
 package implementacion;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 //hola
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.swing.JOptionPane;
 
 import clases.Disparo;
 import clases.EnemigoAnimado1;
@@ -10,6 +15,7 @@ import clases.EnemigoAnimado3;
 import clases.Fondo;
 import clases.Item;
 import clases.JugadorAnimado;
+import clases.Player;
 import clases.Tile;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -56,7 +62,10 @@ public class Juego extends Application{
 	private Item item18;
 	private Disparo disp;
 	private Tile tile;
+	private static ArrayList<Player> jugadores;
 	 public static ArrayList<Disparo> cuetazos;
+	private static int puntuacion;
+	private static int vida;
 	
 	private Boolean booleano;
 	int randomx,randomy,randomyy;
@@ -201,6 +210,8 @@ public class Juego extends Application{
 		
 		
 		
+		
+		
 		cargarImagenes();
 		jugadorAnimado = new JugadorAnimado(240, 300, "personaje", 3, 0,"descanso");
 		fondo = new Fondo(0,0,"fondo-bosque","fondo-bosque2",3);
@@ -252,6 +263,24 @@ public class Juego extends Application{
 		//imagenes.put("enemigo3", new Image("enemigo3.png"));
 		imagenes.put("shot",new Image("shot.png"));
 		
+		
+	}
+	
+	
+	public static void Vidas() {
+		vida = 4;
+		jugadores.add(new Player(JOptionPane.showInputDialog("Nombre del jugador"),vida));
+		
+		try {
+			BufferedWriter archivo = new BufferedWriter(new FileWriter("NombredeJugadores.cvs",true));
+            archivo.write(Player.toCSV());	
+            archivo.flush();
+            archivo.close();
+		
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -349,6 +378,7 @@ public class Juego extends Application{
 		jugadorAnimado.verificarColisionesItem(item16);
 		jugadorAnimado.verificarColisionesItem(item17);
 		jugadorAnimado.verificarColisionesItem(item18);
+		
 		
 		//if(booleano==true) {
 			
