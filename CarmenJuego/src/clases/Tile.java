@@ -154,6 +154,12 @@ public class Tile extends ObjetoJuego{
 
 	
 
+	public Rectangle obtenerRectangulo() {
+		return new Rectangle(this.x, this.y, this.ancho, this.alto);
+		
+	}
+
+
 	
 	
 

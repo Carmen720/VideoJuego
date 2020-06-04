@@ -25,6 +25,7 @@ public class JugadorAnimado extends ObjetoJuego{
 	private int arp =0;
 	private String ultimaAnimacion = "descanso";
 	private Item item;
+	private int orientacion = 1;
 	public static int xestatica;
 	public static int yestatica;
 	
@@ -222,6 +223,42 @@ public class JugadorAnimado extends ObjetoJuego{
 		}
 	}
 	
+	
+	public boolean verificarColision (Tile tiles) {
+		if (obtenerRectangulo().intersects(tiles.obtenerRectangulo().getBoundsInLocal()) ) {
+			//no mover parametro de X e Y
+			System.out.println(" Esta colisionando con una pared");
+			if (Juego.derecha) {
+				
+				x-=velocidad;
+				this.animacionActual = "descanso";
+				//arp = 0;
+							
+			}
+			
+			if (Juego.izquierda) {
+				if(true)
+				x+= velocidad;
+				this.animacionActual = "descanso";;
+				this.orientacion = -1;
+				arp = 60;
+				
+			}
+			
+			if (Juego.arriba) {
+				y+= velocidad;
+				this.animacionActual = "descanso";;
+			}
+			
+			if (Juego.abajo) {
+				y-= velocidad;
+				this.animacionActual = "descanso";;
+			}
+			return true;
+		}
+		return false;
+	}
+	
 	public boolean muere(){
         if (this.vidas <= 0)
             return true;
@@ -229,14 +266,9 @@ public class JugadorAnimado extends ObjetoJuego{
     }
 
 
+
 	
-	//public void actualizarVidas() {
-		//if(vidas<0) {
-			//System.out.println("haz perdido");
-			
-	//	}
-		
-//	}
+	
 	
 	 
 		

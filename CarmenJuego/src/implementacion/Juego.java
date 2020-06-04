@@ -66,12 +66,6 @@ public class Juego extends Application{
 	private Item item18;
 	private Disparo disp;
 	private Tile tile;
-	private static ArrayList<Player> jugadores;
-	 public static ArrayList<Disparo> cuetazos;
-	private static int puntuacion;
-	private static int vida;
-	
-	private Boolean booleano;
 	int randomx,randomy,randomyy;
 	int randomxV,randomyV,randomyyV;
 		
@@ -514,7 +508,7 @@ public class Juego extends Application{
 						jugadorAnimado.setVelocidad(15);
 					//	EnemigoAnimado1.setVelocidad(15);
 					//	EnemigoAnimado2.setVelocidad(15);
-						booleano = true;					
+											
 	
 						break;
 				}

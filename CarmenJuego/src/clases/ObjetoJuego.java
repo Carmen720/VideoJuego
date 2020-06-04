@@ -40,6 +40,8 @@ public abstract class ObjetoJuego {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+
 
 
 
